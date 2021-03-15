@@ -1,0 +1,26 @@
+{
+  "name": "anon-wallet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "start": "concurrently \"npm run tsc:w\" \"parcel index.html\" "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@waves/provider-seed": "^0.1.1",
+    "@waves/signer": "0.0.3",
+    "@waves/ts-types": "^0.3.0",
+    "@waves/waves-transactions": "^3.20.2"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "lite-server": "^2.6.1",
+    "typescript": "^4.2.3"
+  }
+}
