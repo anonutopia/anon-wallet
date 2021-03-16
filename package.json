@@ -16,9 +16,11 @@
     "@waves/provider-seed": "^0.1.1",
     "@waves/signer": "0.0.3",
     "@waves/ts-types": "^0.3.0",
-    "@waves/waves-transactions": "^3.20.2"
+    "@waves/waves-transactions": "^3.20.2",
+    "jquery": "^3.6.0"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.5",
     "concurrently": "^6.0.0",
     "lite-server": "^2.6.1",
     "typescript": "^4.2.3"
