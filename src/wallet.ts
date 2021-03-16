@@ -49,3 +49,15 @@ $("#backFromCards").on( "click", function() {
         $("#screen-home").fadeIn();
     });
 });
+
+$("#settings").on( "click", function() {
+    $("#screen-home").fadeOut(function(){
+        $("#screen-settings").fadeIn();
+    });
+});
+
+$("#backFromSettings").on( "click", function() {
+    $("#screen-settings").fadeOut(function(){
+        $("#screen-home").fadeIn();
+    });
+});
