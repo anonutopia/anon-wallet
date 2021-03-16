@@ -46,7 +46,7 @@
                <a href="javascript:void(0)" id="receive"><i class="bi bi-arrow-down-circle-fill text-success main-icon"></i></a>
             </div>
             <div class="col-xl-1 col-md-2 col-3 text-end px-0">
-               <a href=""><i class="bi bi-arrow-up-right-circle-fill text-danger main-icon"></i></a>
+               <a href="javascript:void(0)" id="send"><i class="bi bi-arrow-up-right-circle-fill text-danger main-icon"></i></a>
             </div>
          </div>
       </div>
@@ -60,7 +60,7 @@
                   <div class="col-12 col-lg-4">
                      <h6 class="mb-3">Račun:</h6>
                      <div class="input-group mb-3 input-group-sm">
-                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" readonly value="3PJ7XXo6hoGtjts2HGnjV5GTSGexLfg5JEV">
+                        <input type="text" class="form-control" aria-describedby="basic-addon2" readonly value="3PJ7XXo6hoGtjts2HGnjV5GTSGexLfg5JEV">
                         <div class="input-group-append">
                            <button class="btn btn-primary" type="button">
                               <i class="bi bi-files"></i>
@@ -77,6 +77,49 @@
          <div class="row py-4">
             <div class="text-start px-0">
                <button class="btn btn-secondary" type="button" id="backFromReceive">
+                  <i class="bi bi-arrow-left-circle-fill"></i> Natrag
+               </button>
+            </div>
+         </div>
+      </div>
+
+      <!-- Screen Send -->
+      <div id="screen-send" style="display: none;">
+         <div class="row">
+            <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
+               <div class="row">
+                  <div class="col-0 col-lg-3"></div>
+                  <div class="col-12 col-lg-6">
+                     <form>
+                        <div class="mb-3">
+                           <label for="exampleInputPassword1" class="form-label fw-bold">Adresa računa</label>
+                           <div class="input-group mb-3 input-group-sm">
+                              <input type="text" class="form-control" placeholder="Adresa računa" aria-label="Adresa računa" aria-describedby="basic-addon2" value="">
+                              <div class="input-group-append">
+                                 <button class="btn btn-primary" type="button">
+                                    <i class="bi bi-upc-scan"></i>
+                                 </button>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="mb-4">
+                           <label for="exampleInputPassword1" class="form-label fw-bold">Iznos</label>
+                           <input type="text" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="text-center">
+                           <button type="submit" class="btn btn-danger btn-lg end-0">
+                              <i class="bi bi-arrow-up-right-circle-fill"></i> Pošalji
+                           </button>
+                        </div>
+                     </form>
+                  </div>
+                  <div class="col-0 col-lg-3"></div>
+               </div>
+            </div>
+         </div>
+         <div class="row py-4">
+            <div class="text-start px-0">
+               <button class="btn btn-secondary" type="button" id="backFromSend">
                   <i class="bi bi-arrow-left-circle-fill"></i> Natrag
                </button>
             </div>
