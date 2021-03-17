@@ -15,7 +15,7 @@
 <body>
 
    <!-- Loading Page -->
-   <div class="container" style="padding: 0 30px;" id="loading-page">
+   <div class="container" style="padding: 0 30px;" id="page-loading">
       <div class="row">
          <div class="col-0 col-lg-3"></div>
          <div class="col-12 col-lg-6 text-center">
@@ -41,7 +41,7 @@
    </div>
 
    <!-- Main Page -->
-   <div class="container" style="padding: 0 30px; display: none;" id="main-page">
+   <div class="container" style="padding: 0 30px; display: none;" id="page-main">
 
       <!-- Header -->
       <div class="row py-5">
@@ -61,7 +61,7 @@
       <div id="screen-home">
          <div class="row">
             <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
-               <span class="display-1 p-2 fw-bold">156.47</span><span class="fs-3">kn</span>
+               <span class="display-1 p-2 fw-bold">0.00</span><span class="fs-3">kn</span>
             </div>
          </div>
          <div class="row py-4">
@@ -117,7 +117,7 @@
                <div class="row">
                   <div class="col-0 col-lg-3"></div>
                   <div class="col-12 col-lg-6">
-                     <form>
+                     <form action="javascript:void(0)">
                         <div class="mb-3">
                            <label class="form-label fw-bold">Adresa računa</label>
                            <div class="input-group mb-3 input-group-sm">
@@ -134,7 +134,7 @@
                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Iznos kuna" aria-label="Iznos kuna">
                         </div>
                         <div class="d-grid">
-                           <button type="submit" class="btn btn-danger btn-block btn-lg">
+                           <button type="submit" class="btn btn-danger btn-block btn-lg" data-bs-toggle="modal" data-bs-target="#passwordModal">
                               <i class="bi bi-arrow-up-right-circle-fill"></i> Pošalji
                            </button>
                         </div>
@@ -176,12 +176,12 @@
                <div class="row">
                   <div class="col-0 col-lg-3"></div>
                   <div class="col-12 col-lg-6">
-                     <form>
+                     <form action="javascript:void(0)">
                         <div class="mb-3">
                           <label class="form-label fw-bold">Seed riječi za backup</label>
                           <textarea class="form-control" name="" id="" rows="3" readonly></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
                            <i class="bi bi-lightbulb-fill"></i> Prikaži
                         </button>
                         <button type="submit" class="btn btn-primary ms-3" disabled>
@@ -194,7 +194,7 @@
                <div class="row mt-5">
                   <div class="col-0 col-lg-3"></div>
                   <div class="col-12 col-lg-6">
-                     <form>
+                     <form action="javascript:void(0)">
                         <div class="mb-3">
                            <label class="form-label fw-bold">Nova lozinka</label>
                            <input type="password" class="form-control" id="exampleInputPassword1">
@@ -203,7 +203,7 @@
                           <label class="form-label fw-bold">Ponovi novu lozinku</label>
                           <input type="password" class="form-control" id="exampleInputPassword1">
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
                            <i class="bi bi-lock-fill"></i> Promijeni lozinku
                         </button>
                      </form>
@@ -241,7 +241,7 @@
                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                   <i class="bi bi-x-circle-fill"></i> Odustani
                </button>
-               <button type="button" class="btn btn-primary">
+               <button type="button" class="btn btn-danger">
                   <i class="bi bi-arrow-right-circle-fill"></i> Nastavi
                </button>
             </div>
