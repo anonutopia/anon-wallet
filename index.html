@@ -14,7 +14,34 @@
 
 <body>
 
-   <div class="container" style="padding: 0 30px;">
+   <!-- Loading Page -->
+   <div class="container" style="padding: 0 30px;" id="loading-page">
+      <div class="row">
+         <div class="col-0 col-lg-3"></div>
+         <div class="col-12 col-lg-6 text-center">
+            <div class="bg-light p-md-5 py-5 border shadow-lg my-5">
+               <div class="row">
+                  <div class="col"></div>
+                  <div class="col-10">
+                     <img src="./img/logo.png" alt="Kriptokuna Novčanik" class="img-fluid" style="max-height: 70px;">
+                  </div>
+                  <div class="col"></div>
+               </div>
+               <div class="row mt-4">
+                  <div class="d-flex justify-content-center">
+                     <div class="spinner-border text-danger" role="status">
+                       <span class="visually-hidden">Loading...</span>
+                     </div>
+                   </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-0 col-lg-3"></div>
+      </div>
+   </div>
+
+   <!-- Main Page -->
+   <div class="container" style="padding: 0 30px; display: none;" id="main-page">
 
       <!-- Header -->
       <div class="row py-5">

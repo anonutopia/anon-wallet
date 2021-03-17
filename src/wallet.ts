@@ -61,3 +61,9 @@ $("#backFromSettings").on( "click", function() {
         $("#screen-home").fadeIn();
     });
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    $("#loading-page").fadeOut(function(){
+        $("#main-page").fadeIn();
+    });
+})
