@@ -24,6 +24,7 @@
     "@types/jquery": "^3.5.5",
     "@types/js-cookie": "^2.2.6",
     "concurrently": "^6.0.0",
+    "copy-to-clipboard": "^3.3.1",
     "js-cookie": "^2.2.1",
     "lite-server": "^2.6.1",
     "qrcode": "^1.4.4",

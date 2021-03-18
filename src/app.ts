@@ -5,6 +5,7 @@ var QRCode = require('qrcode');
 import $ from "jquery";
 import "regenerator-runtime/runtime.js";
 import Cookies from "js-cookie";
+import copy from 'copy-to-clipboard';
 
 class Wallet { 
     private address;
@@ -58,10 +59,10 @@ class Wallet {
                 $("#pMessage3").html("Lozinka je pogrešna, pokušajte ponovo.");
                 $("#pMessage3").fadeIn();
             }
-        } else (
+        } else {
             $("#pMessage3").html("Lozinka je obavezna.");
             $("#pMessage3").fadeIn();
-        )
+        }
     }
 
     logout() {
@@ -102,7 +103,7 @@ class Wallet {
     }
 
     async populateBalance() {
-        var balances = await this.signer.getBalance();
+        const balances = await this.signer.getBalance();
         balances.forEach(function (asset) {
             if (asset.assetId == AHRK) {
                 var balance = asset.amount / AHRKDEC;
@@ -110,9 +111,10 @@ class Wallet {
                 $("#balance").html(String(balance.toFixed(2)));
             }
         });
-        setTimeout(function() {
-            wallet.populateBalance();
-        }, 1000);
+    }
+
+    private delay(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     private async initWaves(seed) {
@@ -152,7 +154,13 @@ class Wallet {
             await this.initWaves(seed);
         }
 
-        this.populateBalance();
+        await wallet.populateBalance();
+
+        setInterval(async function(){
+            try {
+                await wallet.populateBalance();
+            } catch (e) {}
+        }, 30000);
     }
 
     private accountExists():boolean {
@@ -187,6 +195,10 @@ class Wallet {
     }
 
     private showHomeAfterLogin() {
+        if (activeScreen != "home") {
+            $("#screen-" + activeScreen).hide();
+            $("#screen-home").show();
+        }
         activeScreen = "home";
         $("#page-login").fadeOut(function(){
             $("#page-main").fadeIn();
@@ -198,6 +210,7 @@ var wallet = new Wallet();
 var activeScreen = "home";
 const AHRK = "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT";
 const AHRKDEC = 1000000;
+const page = wallet.getPage();
 
 // Button bindings
 
@@ -296,9 +309,18 @@ $("#buttonLogout").on( "click", function() {
     wallet.logout();
 });
 
+$("#buttonCopy").on( "click", function() {
+    var address = $("#address").val();
+    copy(String(address));
+    $("#pMessage4").fadeIn(function(){
+        setTimeout(function(){
+            $("#pMessage4").fadeOut();
+        }, 500);
+    });
+});
+
 document.addEventListener('DOMContentLoaded', (event) => {
     $("#page-loading").fadeOut(function(){
-        var page = wallet.getPage();
         $("#page-" + page).fadeIn();
     });
 })
