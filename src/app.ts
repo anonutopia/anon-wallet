@@ -68,6 +68,18 @@ $("#backFromSettings").on( "click", function() {
     });
 });
 
+$("#buttonShowExisting").on( "click", function() {
+    $("#newAccount").fadeOut(function(){
+        $("#existingAccount").fadeIn();
+    });
+});
+
+$("#buttonNewAccount").on( "click", function() {
+    $("#existingAccount").fadeOut(function(){
+        $("#newAccount").fadeIn();
+    });
+});
+
 document.addEventListener('DOMContentLoaded', (event) => {
     $("#page-loading").fadeOut(function(){
         var page = getPage();
@@ -77,5 +89,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 function getPage() {
     // return "main";
-    return "login";
+    return "newaccount";
 }

@@ -52,15 +52,78 @@
                   </div>
                </div>
                <div class="row mt-4">
-                     <form action="javascript:void(0)">
-                        <div class="mb-4">
-                           <label class="form-label fw-bold">Unesi lozinku</label>
-                           <input type="password" class="form-control" id="exampleInputPassword1">
-                         </div>
-                        <button type="button" class="btn btn-success btn-lg">
-                           <i class="bi bi-arrow-right-circle-fill"></i> Login
+                  <form action="javascript:void(0)">
+                     <div class="mb-4">
+                        <label class="form-label fw-bold">Unesi lozinku</label>
+                        <input type="password" class="form-control">
+                     </div>
+                     <button type="button" class="btn btn-success btn-lg">
+                        <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;Login
+                     </button>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="col-0 col-lg-3"></div>
+      </div>
+   </div>
+
+   <!-- New Account Page -->
+   <div class="container" style="padding: 0 30px; display: none;" id="page-newaccount">
+      <div class="row">
+         <div class="col-0 col-lg-3"></div>
+         <div class="col-12 col-lg-6">
+            <div class="bg-light p-md-5 p-3 border shadow-lg my-5">
+               <div class="row">
+                  <div class="col-12">
+                     <img src="./img/logo.png" alt="Kriptokuna Novčanik" class="img-fluid" style="max-height: 70px;">
+                  </div>
+               </div>
+               <div class="row mt-3" id="newAccount">
+                  <h4 class="my-3">Novi Kriptokuna račun</h4>
+                  <form action="javascript:void(0)">
+                     <div class="mb-3">
+                        <label class="form-label fw-bold">Lozinka</label>
+                        <input type="password" class="form-control">
+                      </div>
+                     <div class="mb-4">
+                       <label class="form-label fw-bold">Ponovi lozinku</label>
+                       <input type="password" class="form-control">
+                     </div>
+                     <div class="justify-content-between d-flex">
+                        <button class="btn btn-success">
+                           <i class="bi bi-person-plus-fill"></i>&nbsp;&nbsp;Registriraj
                         </button>
-                     </form
+                        <button class="btn btn-secondary" id="buttonShowExisting">
+                           <i class="bi bi-person-check-fill"></i>&nbsp;&nbsp;Postojeći
+                        </button>
+                     </div>
+                  </form>
+               </div>
+               <div class="row mt-3" id="existingAccount" style="display: none;">
+                  <h4 class="my-3">Postojeći Kriptokuna račun</h4>
+                  <form action="javascript:void(0)">
+                     <div class="mb-3">
+                        <label class="form-label fw-bold">Lozinka</label>
+                        <input type="password" class="form-control">
+                      </div>
+                     <div class="mb-3">
+                       <label class="form-label fw-bold">Ponovi lozinku</label>
+                       <input type="password" class="form-control">
+                     </div>
+                     <div class="mb-4">
+                        <label class="form-label fw-bold">Seed riječi</label>
+                        <textarea class="form-control" rows="3"></textarea>
+                      </div>
+                      <div class="justify-content-between d-flex">
+                        <button class="btn btn-success">
+                           <i class="bi bi-person-check-fill"></i>&nbsp;&nbsp;Unesi
+                        </button>
+                        <button class="btn btn-secondary" id="buttonNewAccount">
+                           <i class="bi bi-person-plus-fill"></i>&nbsp;&nbsp;Novi račun
+                        </button>
+                     </div>
+                  </form>
                </div>
             </div>
          </div>
@@ -93,13 +156,13 @@
             </div>
          </div>
          <div class="row py-4">
-            <div class="col-md-2 col-3 text-start px-0">
+            <div class="col-md-2 -3 text-start px-0">
                <a href="javascript:void(0)" id="cards"><i class="bi bi-credit-card-fill text-primary main-icon"></i></a>
             </div>
             <div class="col-xl-8 col-md-6 col-3"></div>
             <div class="col-xl-1 col-md-2 col-3 text-end">
                <a href="javascript:void(0)" id="receive"><i class="bi bi-arrow-down-circle-fill text-success main-icon"></i></a>
-            </div>
+            </div>col
             <div class="col-xl-1 col-md-2 col-3 text-end px-0">
                <a href="javascript:void(0)" id="send"><i class="bi bi-arrow-up-right-circle-fill text-danger main-icon"></i></a>
             </div>
@@ -115,7 +178,7 @@
                   <div class="col-12 col-lg-4">
                      <label class="form-label fw-bold">Račun</label>
                      <div class="input-group mb-3 input-group-sm">
-                        <input type="text" class="form-control" aria-describedby="basic-addon2" readonly value="3PJ7XXo6hoGtjts2HGnjV5GTSGexLfg5JEV">
+                        <input type="text" class="form-control" readonly value="3PJ7XXo6hoGtjts2HGnjV5GTSGexLfg5JEV">
                         <div class="input-group-append">
                            <button class="btn btn-primary" type="button">
                               <i class="bi bi-files"></i>
@@ -147,9 +210,9 @@
                   <div class="col-12 col-lg-6">
                      <form action="javascript:void(0)">
                         <div class="mb-3">
-                           <label class="form-label fw-bold">Adresa računa</label>
+                           <label class="form-label fw-bold">Račun</label>
                            <div class="input-group mb-3 input-group-sm">
-                              <input type="text" class="form-control" placeholder="Adresa računa" aria-label="Adresa računa">
+                              <input type="text" class="form-control" placeholder="Račun" aria-label="Račun">
                               <div class="input-group-append">
                                  <button class="btn btn-primary" type="button">
                                     <i class="bi bi-upc-scan"></i>
@@ -159,11 +222,11 @@
                         </div>
                         <div class="mb-5">
                            <label class="form-label fw-bold">Iznos</label>
-                           <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Iznos kuna" aria-label="Iznos kuna">
+                           <input type="text" class="form-control" placeholder="Iznos kuna" aria-label="Iznos kuna">
                         </div>
                         <div class="d-grid">
-                           <button type="submit" class="btn btn-danger btn-block btn-lg" data-bs-toggle="modal" data-bs-target="#passwordModal">
-                              <i class="bi bi-arrow-up-right-circle-fill"></i> Pošalji
+                           <button class="btn btn-danger btn-block btn-lg" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                              <i class="bi bi-arrow-up-right-circle-fill"></i>&nbsp;&nbsp;Pošalji
                            </button>
                         </div>
                      </form>
@@ -207,13 +270,13 @@
                      <form action="javascript:void(0)">
                         <div class="mb-3">
                           <label class="form-label fw-bold">Seed riječi za backup</label>
-                          <textarea class="form-control" name="" id="" rows="3" readonly></textarea>
+                          <textarea class="form-control" rows="3" readonly></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
-                           <i class="bi bi-lightbulb-fill"></i> Prikaži
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                           <i class="bi bi-lightbulb-fill"></i>&nbsp;&nbsp;Prikaži
                         </button>
-                        <button type="submit" class="btn btn-primary ms-3" disabled>
-                           <i class="bi bi-files"></i> Kopiraj
+                        <button class="btn btn-primary ms-3" disabled>
+                           <i class="bi bi-files"></i>&nbsp;&nbsp;Kopiraj
                         </button>
                      </form>
                   </div>
@@ -225,14 +288,14 @@
                      <form action="javascript:void(0)">
                         <div class="mb-3">
                            <label class="form-label fw-bold">Nova lozinka</label>
-                           <input type="password" class="form-control" id="exampleInputPassword1">
+                           <input type="password" class="form-control">
                          </div>
                         <div class="mb-3">
                           <label class="form-label fw-bold">Ponovi novu lozinku</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1">
+                          <input type="password" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
-                           <i class="bi bi-lock-fill"></i> Promijeni lozinku
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                           <i class="bi bi-lock-fill"></i>&nbsp;&nbsp;Promijeni lozinku
                         </button>
                      </form>
                   </div>
@@ -263,14 +326,14 @@
                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Odustani"></button>
             </div>
             <div class="modal-body pt-1">
-               <input type="password" class="form-control" id="exampleInputPassword1">
+               <input type="password" class="form-control">
             </div>
             <div class="modal-footer justify-content-between">
                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                  <i class="bi bi-x-circle-fill"></i> Odustani
+                  <i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;Odustani
                </button>
                <button type="button" class="btn btn-danger">
-                  <i class="bi bi-arrow-right-circle-fill"></i> Nastavi
+                  <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;Nastavi
                </button>
             </div>
          </div>
