@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "es2015",
+    "target": "es2017",
+    "module": "esnext",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -9,7 +9,8 @@
     "outDir": "dist",
     "rootDir": "src",
     "moduleResolution": "node",
-    "sourceMap": true
+    "sourceMap": true,
+    "noImplicitAny": false
   },
   "include": [
     "src/**/*"
