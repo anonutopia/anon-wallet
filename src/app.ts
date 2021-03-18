@@ -64,6 +64,14 @@ class Wallet {
         )
     }
 
+    logout() {
+        this.sessionSeed = null;
+        Cookies.remove("sessionSeed");
+        $("#page-main").fadeOut(function(){
+            $("#page-login").fadeIn();
+        });
+    }
+
     async register() { 
         if (passwordsEqual("password2", "password3", "pMessage1")) {
             var seed = libs.crypto.randomSeed();
@@ -282,6 +290,10 @@ $("#buttonLogin").on( "click", function() {
 
 $("#loginForm").on( "submit", function() {
     wallet.login();
+});
+
+$("#buttonLogout").on( "click", function() {
+    wallet.logout();
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
