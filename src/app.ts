@@ -33,6 +33,37 @@ class Wallet {
         }
     }
 
+    async login() {
+        var p = $("#password1").val();
+        if (p) {
+            try {
+                var seed = libs.crypto.decryptSeed(this.seed, String(p));
+                var signer = new Signer();
+                var provider = new ProviderSeed(seed);
+                signer.setProvider(provider);
+                var user = await signer.login();
+                if (this.address == user.address) {
+                    await this.initWaves(seed);
+                    var d = new Date();
+                    d.setHours(d.getHours()+1)
+                    this.sessionSeed = libs.crypto.encryptSeed(String(seed), this.address);
+                    Cookies.set("sessionSeed", this.sessionSeed, { expires: d });
+                    this.populateData();
+                    this.showHomeAfterLogin();
+                } else {
+                    $("#pMessage3").html("Lozinka je pogrešna, pokušajte ponovo.");
+                    $("#pMessage3").fadeIn();
+                }
+            } catch (e) {
+                $("#pMessage3").html("Lozinka je pogrešna, pokušajte ponovo.");
+                $("#pMessage3").fadeIn();
+            }
+        } else (
+            $("#pMessage3").html("Lozinka je obavezna.");
+            $("#pMessage3").fadeIn();
+        )
+    }
+
     async register() { 
         if (passwordsEqual("password2", "password3", "pMessage1")) {
             var seed = libs.crypto.randomSeed();
@@ -68,7 +99,7 @@ class Wallet {
             if (asset.assetId == AHRK) {
                 var balance = asset.amount / AHRKDEC;
                 balance = Math.round(balance * 100) / 100;
-                $("#balance").html(String(balance));
+                $("#balance").html(String(balance.toFixed(2)));
             }
         });
         setTimeout(function() {
@@ -81,7 +112,7 @@ class Wallet {
         this.provider = new ProviderSeed(seed);
         this.signer.setProvider(this.provider);
         this.user = await this.signer.login();
-        this.address = this.user.address;        
+        this.address = this.user.address;
     }
 
     private encryptSeed(seed, password) {
@@ -97,7 +128,11 @@ class Wallet {
     private setCookies() {
         Cookies.set("address", this.address, { expires: 365*24*10 });
         Cookies.set("seed", this.seed, { expires: 365*24*10 });
-        Cookies.set("sessionSeed", this.sessionSeed, { expires: 365*24*10 });
+
+        var d = new Date();
+        d.setHours(d.getHours()+1)
+
+        Cookies.set("sessionSeed", this.sessionSeed, { expires: d });
     }
 
     private async populateData() {
@@ -139,6 +174,13 @@ class Wallet {
     private showHomeAfterRegister() {
         activeScreen = "home";
         $("#page-newaccount").fadeOut(function(){
+            $("#page-main").fadeIn();
+        });
+    }
+
+    private showHomeAfterLogin() {
+        activeScreen = "home";
+        $("#page-login").fadeOut(function(){
             $("#page-main").fadeIn();
         });
     }
@@ -232,6 +274,14 @@ $("#buttonRegister").on( "click", function() {
 
 $("#buttonImport").on( "click", function() {
     wallet.import();
+});
+
+$("#buttonLogin").on( "click", function() {
+    wallet.login();
+});
+
+$("#loginForm").on( "submit", function() {
+    wallet.login();
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {

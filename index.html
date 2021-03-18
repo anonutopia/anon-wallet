@@ -52,12 +52,13 @@
                   </div>
                </div>
                <div class="row mt-4">
-                  <form action="javascript:void(0)">
+                  <form action="javascript:void(0)" id="loginForm">
                      <div class="mb-4">
                         <label class="form-label fw-bold">Unesi lozinku</label>
                         <input type="password" class="form-control" id="password1">
+                        <div id="pMessage3" class="form-text text-danger mt-2" style="display: none;"></div>
                      </div>
-                     <button type="button" class="btn btn-success btn-lg">
+                     <button type="button" class="btn btn-success btn-lg" id="buttonLogin">
                         <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;Login
                      </button>
                   </form>
