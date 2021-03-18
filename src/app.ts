@@ -9,57 +9,20 @@ import Cookies from "js-cookie";
 class Wallet { 
     private address;
     private seed;
+    private sessionSeed;
+    private user;
+    private signer;
+    private provider;
 
     constructor() { 
         this.address = Cookies.get("address");
         this.seed = Cookies.get("seed");
-    }
-
-    getAddress():string { 
-        return this.address;
-    }
-
-    register():void { 
-        if (passwordsEqual("password2", "password3", "pMessage1")) {
-            var p = $("#password2").val();
-            var seed = libs.crypto.randomSeed();
-            this.seed = libs.crypto.encryptSeed(seed, String(p));
-            Cookies.set("seed", this.seed);
-            this.registerAddress(seed);
-        }
-    }
-
-    private async registerAddress(seed):Promise<void> {
-        var signer = new Signer();
-        var provider = new ProviderSeed(seed);
-        signer.setProvider(provider);
-        var user = await signer.login();
-        this.address = user.address;
-        Cookies.set("address", this.address);
-        $("#address").val(this.address);
-        generateQR(this.address);
-        finishNewAccount();
-    }
-
-    import():void {
-        if (passwordsEqual("password4", "password5", "pMessage2")) {
-            var seed = $("#seedWords1").val();
-            if (seed) {
-                var p = $("#password4").val();
-                this.seed = libs.crypto.encryptSeed(String(seed), String(p));
-                Cookies.set("seed", this.seed);
-                this.registerAddress(seed);
-            } else {
-                $("#pMessage2").html("Seed riječi su obavezne.");
-                $("#pMessage2").fadeIn();
-            }
-        }
+        this.sessionSeed = Cookies.get("sessionSeed");
     }
 
     getPage():string {
         if (this.isLoggedIn()) {
-            $("#address").val(this.address);
-            generateQR(this.address);
+            this.populateData();
             return "main";
         } else {
             if (this.accountExists()) {
@@ -70,7 +33,86 @@ class Wallet {
         }
     }
 
-    accountExists():boolean {
+    async register() { 
+        if (passwordsEqual("password2", "password3", "pMessage1")) {
+            var seed = libs.crypto.randomSeed();
+            await this.initWaves(seed);
+            var p = $("#password2").val();
+            this.encryptSeed(seed, p);
+            this.setCookies();
+            this.populateData();
+            this.showHomeAfterRegister();
+        }
+    }
+
+    async import() {
+        if (passwordsEqual("password4", "password5", "pMessage2")) {
+            var seed = $("#seedWords1").val();
+            if (seed) {
+                await this.initWaves(seed);
+                var p = $("#password4").val();
+                this.encryptSeed(seed, p);
+                this.setCookies();
+                this.populateData();
+                this.showHomeAfterRegister();
+            } else {
+                $("#pMessage2").html("Seed riječi su obavezne.");
+                $("#pMessage2").fadeIn();
+            }
+        }
+    }
+
+    async populateBalance() {
+        var balances = await this.signer.getBalance();
+        balances.forEach(function (asset) {
+            if (asset.assetId == AHRK) {
+                var balance = asset.amount / AHRKDEC;
+                balance = Math.round(balance * 100) / 100;
+                $("#balance").html(String(balance));
+            }
+        });
+        setTimeout(function() {
+            wallet.populateBalance();
+        }, 1000);
+    }
+
+    private async initWaves(seed) {
+        this.signer = new Signer();
+        this.provider = new ProviderSeed(seed);
+        this.signer.setProvider(this.provider);
+        this.user = await this.signer.login();
+        this.address = this.user.address;        
+    }
+
+    private encryptSeed(seed, password) {
+        this.seed = libs.crypto.encryptSeed(String(seed), String(password));
+        this.sessionSeed = libs.crypto.encryptSeed(String(seed), this.address);
+    }
+
+    private decryptSeedSession():string {
+        var seed = libs.crypto.decryptSeed(this.sessionSeed, this.address);
+        return seed;
+    }
+
+    private setCookies() {
+        Cookies.set("address", this.address, { expires: 365*24*10 });
+        Cookies.set("seed", this.seed, { expires: 365*24*10 });
+        Cookies.set("sessionSeed", this.sessionSeed, { expires: 365*24*10 });
+    }
+
+    private async populateData() {
+        $("#address").val(this.address);
+        this.generateQR();
+
+        if (!this.signer) {
+            var seed = this.decryptSeedSession();
+            await this.initWaves(seed);
+        }
+
+        this.populateBalance();
+    }
+
+    private accountExists():boolean {
         if (this.seed) {
             return true;
         } else {
@@ -78,17 +120,34 @@ class Wallet {
         }
     }
 
-    isLoggedIn():boolean {
-        if (this.address) {
+    private isLoggedIn():boolean {
+        if (this.sessionSeed) {
             return true;
         } else {
             return false;
         }
     }
+
+    private generateQR() {
+        QRCode.toString(this.address, function (error, qr) {
+            if (error) console.error(error);
+            $('#qrcode').replaceWith( $('<div/>').append(qr).find('svg:first').attr('id','qrcode') );
+            $('#qrcode').attr('class', 'qrcode border border-dark')
+        })
+    }
+
+    private showHomeAfterRegister() {
+        activeScreen = "home";
+        $("#page-newaccount").fadeOut(function(){
+            $("#page-main").fadeIn();
+        });
+    }
 }
 
 var wallet = new Wallet();
 var activeScreen = "home";
+const AHRK = "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT";
+const AHRKDEC = 1000000;
 
 // Button bindings
 
@@ -201,20 +260,4 @@ function passwordsEqual(p1id, p2id, mid):boolean {
         $("#" + mid).fadeIn();
         return false;
     }
-}
-
-function finishNewAccount() {
-    activeScreen = "home";
-    $("#page-newaccount").fadeOut(function(){
-        $("#page-main").fadeIn();
-    });
-}
-
-function generateQR(address) {
-    QRCode.toString(address, function (error, qr) {
-        if (error) console.error(error);
-
-        $('#qrcode').replaceWith( $('<div/>').append(qr).find('svg:first').attr('id','qrcode') );
-        $('#qrcode').attr('class', 'qrcode border border-dark')
-    })
 }
