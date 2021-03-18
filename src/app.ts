@@ -1,6 +1,7 @@
 import { Signer } from '@waves/signer';
 import { libs } from '@waves/waves-transactions';
 import { ProviderSeed } from '@waves/provider-seed';
+var QRCode = require('qrcode');
 import $ from "jquery";
 import "regenerator-runtime/runtime.js";
 import Cookies from "js-cookie";
@@ -30,17 +31,35 @@ class Wallet {
 
     private async registerAddress(seed):Promise<void> {
         var signer = new Signer();
-        var provider = new ProviderSeed(this.seed);
+        var provider = new ProviderSeed(seed);
         signer.setProvider(provider);
         var user = await signer.login();
         this.address = user.address;
         Cookies.set("address", this.address);
         $("#address").val(this.address);
+        generateQR(this.address);
         finishNewAccount();
+    }
+
+    import():void {
+        if (passwordsEqual("password4", "password5", "pMessage2")) {
+            var seed = $("#seedWords1").val();
+            if (seed) {
+                var p = $("#password4").val();
+                this.seed = libs.crypto.encryptSeed(String(seed), String(p));
+                Cookies.set("seed", this.seed);
+                this.registerAddress(seed);
+            } else {
+                $("#pMessage2").html("Seed riječi su obavezne.");
+                $("#pMessage2").fadeIn();
+            }
+        }
     }
 
     getPage():string {
         if (this.isLoggedIn()) {
+            $("#address").val(this.address);
+            generateQR(this.address);
             return "main";
         } else {
             if (this.accountExists()) {
@@ -152,6 +171,10 @@ $("#buttonRegister").on( "click", function() {
     wallet.register();
 });
 
+$("#buttonImport").on( "click", function() {
+    wallet.import();
+});
+
 document.addEventListener('DOMContentLoaded', (event) => {
     $("#page-loading").fadeOut(function(){
         var page = wallet.getPage();
@@ -166,7 +189,7 @@ function passwordsEqual(p1id, p2id, mid):boolean {
     var p2 = $("#" + p2id).val();
 
     if (!p1 || !p2) {
-        $("#" + mid).html("Oba polja su obavezna.");
+        $("#" + mid).html("Oba polja lozinke su obavezna.");
         $("#" + mid).fadeIn();
         return false;
     }
@@ -185,4 +208,13 @@ function finishNewAccount() {
     $("#page-newaccount").fadeOut(function(){
         $("#page-main").fadeIn();
     });
+}
+
+function generateQR(address) {
+    QRCode.toString(address, function (error, qr) {
+        if (error) console.error(error);
+
+        $('#qrcode').replaceWith( $('<div/>').append(qr).find('svg:first').attr('id','qrcode') );
+        $('#qrcode').attr('class', 'qrcode border border-dark')
+    })
 }

@@ -114,10 +114,11 @@
                      </div>
                      <div class="mb-4">
                         <label class="form-label fw-bold">Seed riječi</label>
-                        <textarea class="form-control" rows="3"></textarea>
+                        <textarea class="form-control" rows="3" id="seedWords1"></textarea>
+                        <div id="pMessage2" class="form-text text-danger mt-1" style="display: none;"></div>
                       </div>
                       <div class="justify-content-between d-flex">
-                        <button class="btn btn-success">
+                        <button class="btn btn-success" id="buttonImport">
                            <i class="bi bi-person-check-fill"></i>&nbsp;Unesi račun
                         </button>
                         <button class="btn btn-secondary" id="buttonNewAccount">
@@ -187,7 +188,7 @@
                         </div>
                      </div>
                      <label class="form-label fw-bold">QR Kod</label>
-                     <img src="./img/qrcode.svg" alt="QR Code" class="qrcode border border-dark">
+                     <img src="./img/qrcode.svg" alt="QR Code" class="qrcode border border-dark" id="qrcode">
                   </div>
                   <div class="col-0 col-lg-4"></div>
                </div>
