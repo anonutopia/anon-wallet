@@ -14,14 +14,17 @@ class Wallet {
     private user;
     private signer;
     private provider;
+    private seedSaved;
 
     constructor() { 
         this.address = Cookies.get("address");
         this.seed = Cookies.get("seed");
         this.sessionSeed = Cookies.get("sessionSeed");
+        this.seedSaved = Cookies.get("seedSaved");
     }
 
     getPage():string {
+        this.checkSeedWarning();
         if (this.isLoggedIn()) {
             this.populateData();
             return "main";
@@ -31,6 +34,12 @@ class Wallet {
             } else {
                 return "newaccount";
             }
+        }
+    }
+
+    checkSeedWarning() {
+        if (!this.seedSaved) {
+            $("#seedWarning").show();
         }
     }
 
@@ -119,6 +128,8 @@ class Wallet {
             $("#seedWords2").val(seed);
             $("#buttonSeedCopy").prop('disabled', false);
             $("#password8").val("");
+            Cookies.set("seedSaved", "true", { expires: 365*24*10 });
+            $("#seedWarning").hide();
         } else {
             alert("wrong");
         }

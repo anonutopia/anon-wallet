@@ -159,6 +159,9 @@
       <!-- Screen Home -->
       <div id="screen-home">
          <div class="row">
+            <div class="alert alert-danger mb-5" role="alert" id="seedWarning" style="display: none;">
+               Ne zaboravite spremiti seed riječi svog računa. Možete ih pronaći u postavkama nakon što upišete lozinku. <strong><u>Sami odgovarate za svoj račun.</u></strong>
+            </div>
             <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
                <span class="display-1 p-2 fw-bold" id="balance">0.00</span><span class="fs-3">kn</span>
             </div>
@@ -236,7 +239,7 @@
                            <label class="form-label fw-bold">Iznos</label>
                            <input type="text" class="form-control" placeholder="Iznos kuna" aria-label="Iznos kuna" id="amount">
                         </div>
-                        <div id="sendError" class="form-text text-danger" style="display: none;">Seed riječi su kopirane.</div>
+                        <div id="sendError" class="form-text text-danger" style="display: none;"></div>
                         <div id="sendSuccess" class="form-text text-success mt-3 mb-2" style="display: none;">Iznos je uspješno poslan.</div>
                         <div class="d-grid mt-4">
                            <button class="btn btn-danger btn-block btn-lg" id="buttonSend">
@@ -307,7 +310,7 @@
                         <div class="mb-3">
                           <label class="form-label fw-bold">Seed riječi za backup</label>
                           <textarea class="form-control" rows="3" readonly id="seedWords2"></textarea>
-                          <div id="pMessage5" class="form-text text-danger mt-3 mb-2" style="display: none;">Seed riječi su kopirane.</div>
+                          <div id="pMessage5" class="form-text text-success mt-3 mb-2" style="display: none;">Seed riječi su kopirane.</div>
                         </div>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
                            <i class="bi bi-lightbulb-fill"></i>&nbsp;&nbsp;Prikaži
