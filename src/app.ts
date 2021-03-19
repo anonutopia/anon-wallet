@@ -74,6 +74,18 @@ class Wallet {
         
     }
 
+    async showSeed() {
+        var p = $("#password8").val();
+        var pv = await this.passwordValid(p);
+        if (pv) {
+            var seed = libs.crypto.decryptSeed(this.seed, p);
+            $("#seedWords2").val(seed);
+            $("#buttonSeedCopy").prop('disabled', false);
+        } else {
+            alert("wrong");
+        }
+    }
+
     async send() {
         var recipient = $("#addressRec").val();
         var a = $("#amount").val();
@@ -399,12 +411,27 @@ $("#buttonSend").on( "click", function() {
     wallet.send();
 });
 
+$("#buttonShowSeed").on( "click", function() {
+    wallet.showSeed();
+});
+
 $("#buttonCopy").on( "click", function() {
     var address = $("#address").val();
     copy(String(address));
     $("#pMessage4").fadeIn(function(){
         setTimeout(function(){
             $("#pMessage4").fadeOut();
+        }, 500);
+    });
+});
+
+$("#buttonSeedCopy").on( "click", function() {
+    var seed = $("#seedWords2").val();
+    copy(String(seed));
+    $("#pMessage5").fadeIn(function(){
+        setTimeout(function(){
+            $("#pMessage5").fadeOut();
+            $("#seedWords2").val("");
         }, 500);
     });
 });
