@@ -216,7 +216,7 @@
                         <div class="mb-3">
                            <label class="form-label fw-bold">Račun</label>
                            <div class="input-group mb-3 input-group-sm">
-                              <input type="text" class="form-control" placeholder="Račun" aria-label="Račun">
+                              <input type="text" class="form-control" placeholder="Račun" aria-label="Račun" id="addressRec">
                               <div class="input-group-append">
                                  <button class="btn btn-primary" type="button">
                                     <i class="bi bi-upc-scan"></i>
@@ -226,10 +226,12 @@
                         </div>
                         <div class="mb-5">
                            <label class="form-label fw-bold">Iznos</label>
-                           <input type="text" class="form-control" placeholder="Iznos kuna" aria-label="Iznos kuna">
+                           <input type="text" class="form-control" placeholder="Iznos kuna" aria-label="Iznos kuna" id="amount">
                         </div>
+                        <div class="alert alert-danger mb-5" role="alert" id="sendError" style="display: none;"></div>
+                        <div class="alert alert-success mb-5" role="alert" id="sendSuccess" style="display: none;">Iznos je uspješno poslan.</div>
                         <div class="d-grid">
-                           <button class="btn btn-danger btn-block btn-lg" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                           <button class="btn btn-danger btn-block btn-lg" id="buttonSend">
                               <i class="bi bi-arrow-up-right-circle-fill"></i>&nbsp;&nbsp;Pošalji
                            </button>
                         </div>

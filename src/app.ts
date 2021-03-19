@@ -73,6 +73,54 @@ class Wallet {
         });
     }
 
+    async send() {
+        var recipient = $("#addressRec").val();
+        var a = $("#amount").val();
+        if (a && recipient) {
+            try {
+                var amount: number = +a;
+                await this.signer.transfer({
+                    amount: Math.floor(amount * AHRKDEC),
+                    recipient: recipient,
+                    assetId: AHRK,
+                    feeAssetId: AHRK,
+                    fee: 50000
+                }).broadcast();
+                $("#sendSuccess").fadeIn(function(){
+                    setTimeout(function(){
+                        $("#sendSuccess").fadeOut();
+                        $("#amount").val("");
+                        $("#addressRec").val("");
+                    }, 2000);
+                });
+            } catch (e) {
+                if (e.error == 112) {
+                    $("#sendError").html("Nemate dovoljno novca na računu. Naknada iznosi 5 lipa.");
+                    $("#sendError").fadeIn(function(){
+                        setTimeout(function(){
+                            $("#sendError").fadeOut();
+                        }, 2000);
+                    });
+                } else {
+                    $("#sendError").html("Dogodila se greška. Pokušajte ponovo.");
+                    $("#sendError").fadeIn(function(){
+                        setTimeout(function(){
+                            $("#sendError").fadeOut();
+                        }, 2000);
+                    });
+                    console.log(e.message)
+                }
+            }
+        } else {
+            $("#sendError").html("Oba polja su obavezna");
+            $("#sendError").fadeIn(function(){
+                setTimeout(function(){
+                    $("#sendError").fadeOut();
+                }, 2000);
+            });
+        }
+    }
+
     async register() { 
         if (passwordsEqual("password2", "password3", "pMessage1")) {
             var seed = libs.crypto.randomSeed();
@@ -307,6 +355,10 @@ $("#loginForm").on( "submit", function() {
 
 $("#buttonLogout").on( "click", function() {
     wallet.logout();
+});
+
+$("#buttonSend").on( "click", function() {
+    wallet.send();
 });
 
 $("#buttonCopy").on( "click", function() {
