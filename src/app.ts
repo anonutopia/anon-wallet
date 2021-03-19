@@ -96,6 +96,7 @@ class Wallet {
                     });
                 }
             } else {
+                $("#password9").val("");
                 $("#pMessage6").html("Lozinka je pogrešna, pokušajte ponovo.");
                 $("#pMessage6").fadeIn();
             }
