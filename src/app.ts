@@ -254,7 +254,7 @@ class Wallet {
         });
     }
 
-    private async passwordValid(password):boolean {
+    private async passwordValid(password):Promise<boolean> {
         if (password) {
             try {
                 var seed = libs.crypto.decryptSeed(this.seed, String(password));
