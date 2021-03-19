@@ -71,7 +71,7 @@ class Wallet {
     }
 
     qrscan() {
-        
+        // alert("fdsaf");
     }
 
     async showSeed() {
@@ -366,6 +366,7 @@ $("#qrButton").on( "click", function() {
     //         wallet.qrscan();
     //     });
     // });
+    wallet.qrscan();
 });
 
 $("#backFromQR").on( "click", function() {
