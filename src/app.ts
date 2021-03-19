@@ -37,7 +37,7 @@ class Wallet {
     async login() {
         var p = $("#password1").val();
         if (p) {
-            var pv = this.passwordValid(p);
+            var pv = await this.passwordValid(p);
             if (pv) {
                 try {
                     var seed = libs.crypto.decryptSeed(this.seed, String(p));
@@ -74,6 +74,37 @@ class Wallet {
         // alert("fdsaf");
     }
 
+    async changePassword() {
+        var p = $("#password9").val();
+        if (p) {
+            var pv = await this.passwordValid(p);
+            if (pv) {
+                $("#password9").val("");
+                if (passwordsEqual("password6", "password7", "pMessage6")) {
+                    $("#pMessage6").hide();
+                    var seed = libs.crypto.decryptSeed(this.seed, String(p));
+                    var newPass = $("#password6").val();
+                    this.encryptSeed(seed, newPass);
+                    this.setCookies();
+                    $("#password6").val("");
+                    $("#password7").val("");
+                    $("#pMessage7").html("Lozinka je uspješno promijenjena.");
+                    $("#pMessage7").fadeIn(function(){
+                        setTimeout(function(){
+                            $("#pMessage7").fadeOut();
+                        }, 500);
+                    });
+                }
+            } else {
+                $("#pMessage6").html("Lozinka je pogrešna, pokušajte ponovo.");
+                $("#pMessage6").fadeIn();
+            }
+        } else {
+            $("#pMessage6").html("Stara lozinka je obavezna.");
+            $("#pMessage6").fadeIn();
+        }
+    }
+
     async showSeed() {
         var p = $("#password8").val();
         var pv = await this.passwordValid(p);
@@ -81,6 +112,7 @@ class Wallet {
             var seed = libs.crypto.decryptSeed(this.seed, String(p));
             $("#seedWords2").val(seed);
             $("#buttonSeedCopy").prop('disabled', false);
+            $("#password8").val("");
         } else {
             alert("wrong");
         }
@@ -416,6 +448,10 @@ $("#buttonShowSeed").on( "click", function() {
     wallet.showSeed();
 });
 
+$("#buttonChangePass").on( "click", function() {
+    wallet.changePassword();
+});
+
 $("#buttonCopy").on( "click", function() {
     var address = $("#address").val();
     copy(String(address));
@@ -433,6 +469,7 @@ $("#buttonSeedCopy").on( "click", function() {
         setTimeout(function(){
             $("#pMessage5").fadeOut();
             $("#seedWords2").val("");
+            $("#buttonSeedCopy").prop('disabled', true);
         }, 500);
     });
 });

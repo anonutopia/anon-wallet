@@ -56,7 +56,7 @@
                      <div class="mb-4">
                         <label class="form-label fw-bold">Unesi lozinku</label>
                         <input type="password" class="form-control" id="password1">
-                        <div id="pMessage3" class="form-text text-danger mt-2" style="display: none;"></div>
+                        <div id="pMessage3" class="form-text text-danger mt-4" style="display: none;"></div>
                      </div>
                      <button type="button" class="btn btn-success btn-lg" id="buttonLogin">
                         <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;Login
@@ -332,7 +332,9 @@
                           <label class="form-label fw-bold">Ponovi novu lozinku</label>
                           <input type="password" class="form-control" id="password7">
                         </div>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                        <div id="pMessage6" class="form-text text-danger mt-3 mb-3" style="display: none;"></div>
+                        <div id="pMessage7" class="form-text text-success mt-3 mb-3" style="display: none;"></div>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
                            <i class="bi bi-lock-fill"></i>&nbsp;&nbsp;Promijeni lozinku
                         </button>
                      </form>
@@ -364,7 +366,7 @@
          Launch demo modal
       </button> -->
       
-      <!-- Modal Password -->
+      <!-- Modal Password Show Seed -->
       <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
          <div class="modal-dialog">
          <div class="modal-content">
@@ -380,6 +382,29 @@
                   <i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;Odustani
                </button>
                <button type="button" class="btn btn-danger" id="buttonShowSeed" data-bs-dismiss="modal">
+                  <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;Nastavi
+               </button>
+            </div>
+         </div>
+         </div>
+      </div>
+
+      <!-- Modal Password Change Password -->
+      <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="passwordModalLabel">Unesi staru lozinku</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Odustani"></button>
+            </div>
+            <div class="modal-body pt-1">
+               <input type="password" class="form-control" id="password9">
+            </div>
+            <div class="modal-footer justify-content-between">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  <i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;Odustani
+               </button>
+               <button type="button" class="btn btn-danger" id="buttonChangePass" data-bs-dismiss="modal">
                   <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;Nastavi
                </button>
             </div>
