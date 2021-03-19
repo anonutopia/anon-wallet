@@ -218,7 +218,7 @@
                            <div class="input-group mb-3 input-group-sm">
                               <input type="text" class="form-control" placeholder="Račun" aria-label="Račun" id="addressRec">
                               <div class="input-group-append">
-                                 <button class="btn btn-primary" type="button">
+                                 <button class="btn btn-primary" type="button" id="qrButton">
                                     <i class="bi bi-upc-scan"></i>
                                  </button>
                               </div>
@@ -244,6 +244,37 @@
          <div class="row py-4">
             <div class="text-start px-0">
                <button class="btn btn-secondary btn-lg" type="button" id="backFromSend">
+                  <i class="bi bi-arrow-left-circle-fill"></i>
+               </button>
+            </div>
+         </div>
+      </div>
+
+      <!-- Screen QR -->
+      <div id="screen-qr" style="display: none;">
+         <!-- <div class="row">
+            <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
+               <div class="col-0 col-lg-4"></div>
+               <div class="col-12 col-lg-4">
+                  <video id="video" width="300" height="200" style="border: 1px solid gray"></video>
+               </div>
+               <div class="col-0 col-lg-4"></div>
+            </div>
+         </div> -->
+         <div class="row">
+            <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
+               <div class="row">
+                  <div class="col-0 col-lg-4"></div>
+                  <div class="col-12 col-lg-4" id="video">
+                     <video id="video"></video>
+                  </div>
+                  <div class="col-0 col-lg-4"></div>
+               </div>
+            </div>
+         </div>
+         <div class="row py-4">
+            <div class="text-start px-0">
+               <button class="btn btn-secondary btn-lg" type="button" id="backFromQR">
                   <i class="bi bi-arrow-left-circle-fill"></i>
                </button>
             </div>
@@ -311,7 +342,7 @@
                   <div class="col-0 col-lg-3"></div>
                   <div class="col-12 col-lg-6">
                      <button class="btn btn-danger btn-lg w-100" id="buttonLogout">
-                        <i class="bi bi-power"></i>&nbsp;&nbspOdlogiraj se
+                        <i class="bi bi-power"></i>&nbsp;&nbsp;Odlogiraj se
                      </button>
                   </div>
                   <div class="col-0 col-lg-3"></div>

@@ -18,6 +18,7 @@
     "@waves/ts-types": "^0.3.0",
     "@waves/waves-transactions": "^3.20.2",
     "jquery": "^3.6.0",
+    "qr-code-scanner": "^1.0.8",
     "wallet": "^0.1.220004"
   },
   "devDependencies": {
