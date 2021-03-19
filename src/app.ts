@@ -78,7 +78,7 @@ class Wallet {
         var p = $("#password8").val();
         var pv = await this.passwordValid(p);
         if (pv) {
-            var seed = libs.crypto.decryptSeed(this.seed, p);
+            var seed = libs.crypto.decryptSeed(this.seed, String(p));
             $("#seedWords2").val(seed);
             $("#buttonSeedCopy").prop('disabled', false);
         } else {
