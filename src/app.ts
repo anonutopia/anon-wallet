@@ -71,7 +71,6 @@ class Wallet {
     }
 
     qrscan() {
-        // alert("fdsaf");
         $("#sendError").html("Skeniranje QR koda bit će dostupno u slijedećoj verziji.");
         $("#sendError").fadeIn(function(){
             setTimeout(function(){
