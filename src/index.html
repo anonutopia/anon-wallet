@@ -287,7 +287,47 @@
       <div id="screen-cards" style="display: none;">
          <div class="row">
             <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
-               <span class="text-secondary">Ova mogućnost je u izradi i bit će dostupna u slijedećoj verziji.</span>
+               <div class="row">
+                  <div class="col-0 col-lg-4"></div>
+                  <div class="col-12 col-lg-4">
+                     <ul class="nav nav-tabs mb-4">
+                        <li class="nav-item">
+                          <a class="nav-link active" aria-current="page" href="javascript:void(0)" id="exButton1">U kriptokune</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="javascript:void(0)" id="exButton2">U kune</a>
+                        </li>
+                     </ul>
+                     <div id="exTab1">
+                        <label class="form-label fw-bold">Iznos WAVESa</label>
+                        <input type="text" class="form-control mb-3 mt-3" readonly value="" id="balanceWaves1">
+                        <div id="exchangeSuccess1" class="form-text text-success" style="display: none;"></div>
+                        <div id="exchangeError1" class="form-text text-danger" style="display: none;"></div>
+                        <button type="button" class="btn btn-success mt-3" id="buttonExchange1">
+                           <i class="bi bi-arrow-down-up"></i>&nbsp;&nbsp;Zamijeni
+                        </button>
+                     </div>
+                     <div id="exTab2" style="display: none;">
+                        <label class="form-label fw-bold">Adresa mjenjačnice</label>
+                        <input type="text" class="form-control mt-2" value="" id="exchangeAddress">
+                        <label class="form-label fw-bold mt-3">Iznos WAVESa</label>
+                        <div class="input-group mb-3 mt-2">
+                           <input type="text" class="form-control" readonly value="" id="balanceWaves2">
+                           <div class="input-group-append">
+                              <button class="btn btn-primary" type="button" id="buttonCopyAmount">
+                                 <i class="bi bi-files"></i>
+                              </button>
+                           </div>
+                        </div>
+                        <div id="exchangeSuccess2" class="form-text text-success" style="display: none;"></div>
+                        <div id="exchangeError2" class="form-text text-danger" style="display: none;"></div>
+                        <button type="button" class="btn btn-danger mt-3" id="buttonExchange2">
+                           <i class="bi bi-arrow-up-right-circle-fill"></i>&nbsp;&nbsp;Pošalji
+                        </button>
+                     </div>
+                  </div>
+                  <div class="col-0 col-lg-4"></div>
+               </div>
             </div>
          </div>
          <div class="row py-4">
@@ -362,11 +402,6 @@
             </div>
          </div>
       </div>
-
-      <!-- Button trigger modal -->
-      <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
-         Launch demo modal
-      </button> -->
       
       <!-- Modal Password Show Seed -->
       <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">

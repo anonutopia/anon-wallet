@@ -43,6 +43,49 @@ class Wallet {
         }
     }
 
+    async exchange(id, address) {
+        var a = $("#balanceWaves" + id).val();
+        if (a) {
+            var amount: number = +a;
+            if (amount > 0) {
+                try {
+                    amount = amount - 0.001
+                    await this.signer.transfer({
+                        amount: Math.floor(amount * SATINBTC),
+                        recipient: address,
+                        fee: 100000
+                    }).broadcast();
+                    if (id == "1") {
+                        $("#exchangeSuccess" + id).html("Zamjena je uspješno napravljena.");
+                    } else {
+                        $("#exchangeSuccess" + id).html("Tokeni su uspješno poslani u mjenjačnicu.");
+                    }
+                    $("#exchangeSuccess" + id).fadeIn(function(){
+                        setTimeout(function(){
+                            $("#exchangeAddress").val("");
+                            $("#exchangeSuccess" + id).fadeOut();
+                        }, 2000);
+                    });
+                } catch (e) {
+                    $("#exchangeError" + id).html("Dogodila se greška. Pokušajte ponovo.");
+                    $("#exchangeError" + id).fadeIn(function(){
+                        setTimeout(function(){
+                            $("#exchangeError" + id).fadeOut();
+                        }, 2000);
+                    });
+                    console.log(e.message)
+                }
+            } else {
+                $("#exchangeError" + id).html("Za ovu radnju potrebno je imati WAVES tokene.");
+                $("#exchangeError" + id).fadeIn(function(){
+                    setTimeout(function(){
+                        $("#exchangeError" + id).fadeOut();
+                    }, 2000);
+                });
+            }
+        }
+    }
+
     async login() {
         var p = $("#password1").val();
         if (p) {
@@ -219,12 +262,12 @@ class Wallet {
                 var balance = asset.amount / AHRKDEC;
                 balance = Math.round(balance * 100) / 100;
                 $("#balance").html(String(balance.toFixed(2)));
+            } else if (asset.assetId == "WAVES") {
+                var balance = asset.amount / SATINBTC;
+                $("#balanceWaves1").val(String(balance.toFixed(8)));
+                $("#balanceWaves2").val(String(balance.toFixed(8)));
             }
         });
-    }
-
-    private delay(ms: number) {
-        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     private async initWaves(seed) {
@@ -338,11 +381,14 @@ class Wallet {
 }
 
 const wallet = new Wallet();
-var activeScreen = "home";
 const AHRK = "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT";
 const AHRKDEC = 1000000;
+const SATINBTC = 100000000;
 const page = wallet.getPage();
 const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
+
+var activeScreen = "home";
+var activeTab = "exTab1";
 
 // Button bindings
 
@@ -400,6 +446,24 @@ $("#settings").on( "click", function() {
             $("#screen-settings").fadeIn();
         });
     }
+});
+
+$("#exButton1").on( "click", function() {
+    $("#exButton1").toggleClass("active");
+    $("#exButton2").toggleClass("active");
+    $("#" + activeTab).fadeOut(function(){
+        activeTab = "exTab1";
+        $("#" + activeTab).fadeIn();
+    });
+});
+
+$("#exButton2").on( "click", function() {
+    $("#exButton2").toggleClass("active");
+    $("#exButton1").toggleClass("active");
+    $("#" + activeTab).fadeOut(function(){
+        activeTab = "exTab2";
+        $("#" + activeTab).fadeIn();
+    });
 });
 
 $("#backFromSettings").on( "click", function() {
@@ -470,6 +534,34 @@ $("#buttonChangePass").on( "click", function() {
     wallet.changePassword();
 });
 
+$("#buttonExchange1").on( "click", function() {
+    wallet.exchange("1", AHRKADDRESS);
+});
+
+$("#buttonExchange2").on( "click", function() {
+    var address = $("#exchangeAddress").val();
+    if (address) {
+        wallet.exchange("2", address);
+    } else {
+        $("#exchangeError2").html("Adresa mjenjačnice je obavezna.");
+        $("#exchangeError2").fadeIn(function(){
+            setTimeout(function(){
+                $("#exchangeError2").fadeOut();
+            }, 2000);
+        });
+    }
+});
+
+$("#buttonCopy").on( "click", function() {
+    var address = $("#address").val();
+    copy(String(address));
+    $("#pMessage4").fadeIn(function(){
+        setTimeout(function(){
+            $("#pMessage4").fadeOut();
+        }, 500);
+    });
+});
+
 $("#buttonCopy").on( "click", function() {
     var address = $("#address").val();
     copy(String(address));
@@ -488,6 +580,17 @@ $("#buttonSeedCopy").on( "click", function() {
             $("#pMessage5").fadeOut();
             $("#seedWords2").val("");
             $("#buttonSeedCopy").prop('disabled', true);
+        }, 500);
+    });
+});
+
+$("#buttonCopyAmount").on( "click", function() {
+    var amount = $("#balanceWaves2").val();
+    copy(String(amount));
+    $("#exchangeSuccess2").html("Iznos je uspješno kopiran.");
+    $("#exchangeSuccess2").fadeIn(function(){
+        setTimeout(function(){
+            $("#exchangeSuccess2").fadeOut();
         }, 500);
     });
 });
