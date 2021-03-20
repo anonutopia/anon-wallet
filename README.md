@@ -1,2 +1,2 @@
-# anon-wallet
+# AnonWallet
 Anonutopia Wallet

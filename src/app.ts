@@ -337,11 +337,12 @@ class Wallet {
     }
 }
 
-var wallet = new Wallet();
+const wallet = new Wallet();
 var activeScreen = "home";
 const AHRK = "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT";
 const AHRKDEC = 1000000;
 const page = wallet.getPage();
+const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
 
 // Button bindings
 
