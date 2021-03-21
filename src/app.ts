@@ -174,7 +174,12 @@ class Wallet {
             Cookies.set("seedSaved", "true", { expires: 365*24*10 });
             $("#seedWarning").hide();
         } else {
-            alert("wrong");
+            $("#pMessage8").html("Lozinka je pogrešna. Pokušajte ponovo.");
+            $("#pMessage8").fadeIn(function(){
+                setTimeout(function(){
+                    $("#pMessage8").fadeOut();
+                }, 500);
+            });
         }
     }
 
