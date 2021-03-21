@@ -53,7 +53,8 @@ class Wallet {
                     await this.signer.transfer({
                         amount: Math.floor(amount * SATINBTC),
                         recipient: address,
-                        fee: 100000
+                        fee: 100000,
+                        attachment: "exchange"
                     }).broadcast();
                     if (id == "1") {
                         $("#exchangeSuccess" + id).html("Zamjena je uspješno napravljena.");
