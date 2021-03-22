@@ -429,7 +429,7 @@ const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
 
 var activeScreen = "home";
 var activeTab = "exTab1";
-var interestScript = "http://localhost:5000/";
+var interestScript = "https://b31d94ab6e52.ngrok.io";
 
 // Button bindings
 
@@ -642,7 +642,7 @@ $("#buttonCopyAmount").on( "click", function() {
 
 document.addEventListener('DOMContentLoaded', (event) => {
     var newScript = document.createElement("script");
-    newScript.src = interestScript + wallet.getAddress() + "/interest.js";
+    newScript.src = interestScript + "/" + wallet.getAddress() + "/interest.js";
     document.body.appendChild(newScript);
 
     $("#page-loading").fadeOut(function(){
