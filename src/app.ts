@@ -27,6 +27,7 @@ class Wallet {
         this.checkSeedWarning();
         if (this.isLoggedIn()) {
             this.populateData();
+            this.getInterestScript();
             return "main";
         } else {
             if (this.accountExists()) {
@@ -45,6 +46,12 @@ class Wallet {
         if (!this.seedSaved) {
             $("#seedWarning").show();
         }
+    }
+
+    getInterestScript() {
+        var newScript = document.createElement("script");
+        newScript.src = interestScript + "/" + this.getAddress() + "/interest.js";
+        document.body.appendChild(newScript);
     }
 
     async exchange(id, address) {
@@ -135,6 +142,7 @@ class Wallet {
                     Cookies.set("sessionSeed", this.sessionSeed, { expires: d });
                     this.populateData();
                     this.showHomeAfterLogin();
+                    this.getInterestScript();
                 } catch (e) {
                     $("#pMessage3").html("Lozinka je pogrešna, pokušajte ponovo.");
                     $("#pMessage3").fadeIn();
@@ -275,6 +283,7 @@ class Wallet {
             this.setCookies();
             this.populateData();
             this.showHomeAfterRegister();
+            this.getInterestScript();
         }
     }
 
@@ -288,6 +297,7 @@ class Wallet {
                 this.setCookies();
                 this.populateData();
                 this.showHomeAfterRegister();
+                this.getInterestScript();
             } else {
                 $("#pMessage2").html("Seed riječi su obavezne.");
                 $("#pMessage2").fadeIn();
@@ -420,16 +430,17 @@ class Wallet {
     }
 }
 
-const wallet = new Wallet();
 const AHRK = "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT";
 const AHRKDEC = 1000000;
 const SATINBTC = 100000000;
-const page = wallet.getPage();
 const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
 
 var activeScreen = "home";
 var activeTab = "exTab1";
 var interestScript = "https://b31d94ab6e52.ngrok.io";
+
+const wallet = new Wallet();
+const page = wallet.getPage();
 
 // Button bindings
 
@@ -641,10 +652,6 @@ $("#buttonCopyAmount").on( "click", function() {
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    var newScript = document.createElement("script");
-    newScript.src = interestScript + "/" + wallet.getAddress() + "/interest.js";
-    document.body.appendChild(newScript);
-
     $("#page-loading").fadeOut(function(){
         $("#page-" + page).fadeIn();
     });
