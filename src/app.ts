@@ -37,6 +37,10 @@ class Wallet {
         }
     }
 
+    getAddress():string {
+        return this.address;
+    }
+
     checkSeedWarning() {
         if (!this.seedSaved) {
             $("#seedWarning").show();
@@ -54,7 +58,7 @@ class Wallet {
                         amount: Math.floor(amount * SATINBTC),
                         recipient: address,
                         fee: 100000,
-                        attachment: "exchange"
+                        attachment: libs.crypto.base58Encode(libs.crypto.stringToBytes('exchange'))
                     }).broadcast();
                     if (id == "1") {
                         $("#exchangeSuccess" + id).html("Zamjena je uspješno napravljena.");
@@ -83,6 +87,36 @@ class Wallet {
                         $("#exchangeError" + id).fadeOut();
                     }, 2000);
                 });
+            }
+        }
+    }
+
+    async collectInterest() {
+        try {
+            await this.signer.transfer({
+                amount: 950000,
+                recipient: AHRKADDRESS,
+                assetId: AHRK,
+                feeAssetId: AHRK,
+                fee: 50000,
+                attachment: libs.crypto.base58Encode(libs.crypto.stringToBytes('collect'))
+            }).broadcast();
+            $("#pMessage9").fadeOut(function() {
+                $("#pMessage10").fadeIn(function(){
+                    setTimeout(function(){
+                        $("#pMessage10").fadeOut(function() {
+                            $("#pMessage9").fadeIn();
+                            $("#accumulatedInerest").html("0.000000")
+                        });
+                    }, 2000);
+                });
+            });
+        } catch (error) {
+            if (error.error == 112) {
+                $("#pMessage9").html("Nemate dovoljno kuna za povlačenje kamate.");
+            } else {
+                $("#pMessage9").html("Dogodila se greška. Pokušajte ponovo.");
+                console.log(error);
             }
         }
     }
@@ -395,6 +429,7 @@ const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
 
 var activeScreen = "home";
 var activeTab = "exTab1";
+var interestScript = "http://localhost:5000/";
 
 // Button bindings
 
@@ -544,6 +579,10 @@ $("#buttonExchange1").on( "click", function() {
     wallet.exchange("1", AHRKADDRESS);
 });
 
+$("#buttonCollect").on( "click", function() {
+    wallet.collectInterest();
+});
+
 $("#buttonExchange2").on( "click", function() {
     var address = $("#exchangeAddress").val();
     if (address) {
@@ -602,6 +641,10 @@ $("#buttonCopyAmount").on( "click", function() {
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
+    var newScript = document.createElement("script");
+    newScript.src = interestScript + wallet.getAddress() + "/interest.js";
+    document.body.appendChild(newScript);
+
     $("#page-loading").fadeOut(function(){
         $("#page-" + page).fadeIn();
     });

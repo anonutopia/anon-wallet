@@ -163,7 +163,25 @@
                Ne zaboravite spremiti seed riječi svog računa. Možete ih pronaći u postavkama nakon što upišete lozinku. <strong><u>Sami odgovarate za svoj račun.</u></strong>
             </div>
             <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
-               <span class="display-1 p-2 fw-bold" id="balance">0.00</span><span class="fs-3">kn</span>
+               <h3 class="p-2 text-center text-secondary border-bottom"><strong>Stanje računa</strong></h3>
+               <span class="display-1 px-2 fw-bold" id="balance">0.00</span><span class="fs-3">kn</span>
+            </div>
+            <div class="bg-light px-md-5 p-3 mt-5 border shadow-lg" style="color: #515151;">
+                  <h6 class="p-2 text-center text-secondary border-bottom"><strong>Akumulirana kamata</strong></h6>
+                  <div class="row p-0">
+                     <div class="col p-0 mt-auto">
+                        <span class="display-6 p-2 fw-bold" id="accumulatedInerest">0.00</span><span class="fs-3">kn</span><br>
+                     </div>
+                     <div class="col text-end pt-2 mt-auto">
+                        <button class="btn btn-success" id="buttonCollect">
+                           <i class="bi bi-arrow-down-circle-fill"></i>&nbsp;&nbsp;Povuci kamatu
+                        </button>
+                     </div>
+                  </div>
+                  <div class="row p-0 mt-2">
+                     <div id="pMessage9" class="form-text text-danger text-end">Naknada za povlačenje iznosi 1 kn.</div>
+                     <div id="pMessage10" class="form-text text-success text-end" style="display: none;">Povlačenje je uspješno izvršeno.</div>
+                  </div>
             </div>
          </div>
          <div class="row py-4">
