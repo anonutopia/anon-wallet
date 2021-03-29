@@ -437,7 +437,7 @@ const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
 
 var activeScreen = "home";
 var activeTab = "exTab1";
-var interestScript = "https://b31d94ab6e52.ngrok.io";
+var interestScript = "https://n.kriptokuna.com";
 
 const wallet = new Wallet();
 const page = wallet.getPage();
@@ -515,6 +515,22 @@ $("#exButton2").on( "click", function() {
     $("#" + activeTab).fadeOut(function(){
         activeTab = "exTab2";
         $("#" + activeTab).fadeIn();
+    });
+});
+
+$("#tabButton1").on( "click", function() {
+    $("#tabButton1").addClass("active");
+    $("#tabButton2").removeClass("active");
+    $("#tab2").fadeOut(function(){
+        $("#tab1").fadeIn();
+    });
+});
+
+$("#tabButton2").on( "click", function() {
+    $("#tabButton2").addClass("active");
+    $("#tabButton1").removeClass("active");
+    $("#tab1").fadeOut(function(){
+        $("#tab2").fadeIn();
     });
 });
 
