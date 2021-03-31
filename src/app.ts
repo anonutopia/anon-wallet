@@ -102,26 +102,39 @@ class Wallet {
         }
     }
 
-    async collectInterest() {
+    async collectInterest(address:string) {
         try {
             await this.signer.transfer({
                 amount: 950000,
-                recipient: AHRKADDRESS,
+                recipient: address,
                 assetId: AHRK,
                 feeAssetId: AHRK,
                 fee: 50000,
                 attachment: libs.crypto.base58Encode(libs.crypto.stringToBytes('collect'))
             }).broadcast();
-            $("#pMessage9").fadeOut(function() {
-                $("#pMessage10").fadeIn(function(){
-                    setTimeout(function(){
-                        $("#pMessage10").fadeOut(function() {
-                            $("#pMessage9").fadeIn();
-                            $("#accumulatedInerest").html("0.000000")
-                        });
-                    }, 2000);
+            if (address == AHRKADDRESS) {
+                $("#pMessage9").fadeOut(function() {
+                    $("#pMessage10").fadeIn(function(){
+                        setTimeout(function(){
+                            $("#pMessage10").fadeOut(function() {
+                                $("#pMessage9").fadeIn();
+                                $("#accumulatedInerest").html("0.000000")
+                            });
+                        }, 2000);
+                    });
                 });
-            });
+            } else {
+                $("#pMessage11").fadeOut(function() {
+                    $("#pMessage12").fadeIn(function(){
+                        setTimeout(function(){
+                            $("#pMessage12").fadeOut(function() {
+                                $("#pMessage11").fadeIn();
+                                $("#accumulatedEarnings").html("0.0000")
+                            });
+                        }, 2000);
+                    });
+                });
+            }
         } catch (error) {
             if (error.error == 112) {
                 $("#pMessage9").html("Nemate dovoljno kuna za povlačenje kamate.");
@@ -322,7 +335,7 @@ class Wallet {
                 $("#balanceWaves2").val(String(balance.toFixed(8)));
             } else if (asset.assetId == AINT) {
                 var balance = asset.amount / SATINBTC;
-                $("#balanceAint").html(String(balance.toFixed(8)));
+                $("#balanceAint").html(String(balance.toFixed(4)));
             }
         });
     }
@@ -441,6 +454,7 @@ const AHRK = "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT";
 const AHRKDEC = 1000000;
 const SATINBTC = 100000000;
 const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
+const AINTADDRESS = "3PBmmxKhFcDhb8PrDdCdvw2iGMPnp7VuwPy"
 const AINT = "66DUhUoJaoZcstkKpcoN3FUcqjB6v8VJd5ZQd6RsPxhv";
 
 var activeScreen = "home";
@@ -616,7 +630,11 @@ $("#buttonExchange1").on( "click", function() {
 });
 
 $("#buttonCollect").on( "click", function() {
-    wallet.collectInterest();
+    wallet.collectInterest(AHRKADDRESS);
+});
+
+$("#buttonCollectEarnings").on( "click", function() {
+    wallet.collectInterest(AINTADDRESS);
 });
 
 $("#buttonExchange2").on( "click", function() {
