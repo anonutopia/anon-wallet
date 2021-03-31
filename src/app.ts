@@ -461,6 +461,7 @@ var activeScreen = "home";
 var activeTab = "exTab1";
 var interestScript = "https://n.kriptokuna.com";
 var earningsScript = "https://aint.anonutopia.com";
+var t;
 
 const wallet = new Wallet();
 const page = wallet.getPage();
@@ -694,7 +695,15 @@ $("#buttonCopyAmount").on( "click", function() {
     });
 });
 
+function createTranslation() {
+    var lang = $("#lang").val();
+    $.getJSON("locales/" + lang + ".json", function( data ) {
+        t = data.app;
+    });
+}
+
 document.addEventListener('DOMContentLoaded', (event) => {
+    createTranslation();
     $("#page-loading").fadeOut(function(){
         $("#page-" + page).fadeIn();
     });
