@@ -10,9 +10,27 @@
     },
     "newAccount": {
       "newTitle": "Novi Kriptokuna račun",
-      "register": "Registriraj se"
+      "register": "Registriraj se",
+      "importTitle": "Postojeći Kriptokuna račun",
+      "seed": "Seed riječi",
+      "import": "Import računa",
+      "new": "Novi"
     },
     "password": "Lozinka",
-    "repeatPassword": "Ponovi lozinku"
+    "repeatPassword": "Ponovi lozinku",
+    "main": {
+      "helpUrl": "https://t.me/Kriptokuna"
+    },
+    "home": {
+      "seedWarning": "Ne zaboravite spremiti seed riječi svog računa. Možete ih pronaći u postavkama nakon što upišete lozinku. <strong><u>Sami odgovarate za svoj račun.</u></strong>",
+      "tab1": "Kriptokuna",
+      "tab2": "Bankar",
+      "balance": "Stanje računa",
+      "earnings": "Akumulirana kamata",
+      "currency": "kn",
+      "collectEarnings": "Povuci kamatu",
+      "feeMessage": "Naknada za povlačenje iznosi 1 kn.",
+      "collectSuccess": "Povlačenje je uspješno izvršeno."
+    }
   }
   
