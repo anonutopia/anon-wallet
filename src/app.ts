@@ -52,6 +52,10 @@ class Wallet {
         var newScript = document.createElement("script");
         newScript.src = interestScript + "/" + this.getAddress() + "/interest.js";
         document.body.appendChild(newScript);
+
+        var newScript1 = document.createElement("script");
+        newScript1.src = earningsScript + "/" + this.getAddress() + "/earnings.js";
+        document.body.appendChild(newScript1);
     }
 
     async exchange(id, address) {
@@ -316,6 +320,9 @@ class Wallet {
                 var balance = asset.amount / SATINBTC;
                 $("#balanceWaves1").val(String(balance.toFixed(8)));
                 $("#balanceWaves2").val(String(balance.toFixed(8)));
+            } else if (asset.assetId == AINT) {
+                var balance = asset.amount / SATINBTC;
+                $("#balanceAint").html(String(balance.toFixed(8)));
             }
         });
     }
@@ -434,10 +441,12 @@ const AHRK = "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT";
 const AHRKDEC = 1000000;
 const SATINBTC = 100000000;
 const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
+const AINT = "66DUhUoJaoZcstkKpcoN3FUcqjB6v8VJd5ZQd6RsPxhv";
 
 var activeScreen = "home";
 var activeTab = "exTab1";
 var interestScript = "https://n.kriptokuna.com";
+var earningsScript = "https://aint.anonutopia.com";
 
 const wallet = new Wallet();
 const page = wallet.getPage();
