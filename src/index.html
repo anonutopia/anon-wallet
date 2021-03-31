@@ -395,16 +395,16 @@
                   <div class="col-12 col-lg-6">
                      <form action="javascript:void(0)">
                         <div class="mb-3">
-                          <label class="form-label fw-bold">Seed riječi za backup</label>
+                          <label class="form-label fw-bold" data-t>settings.seedWords</label>
                           <textarea class="form-control" rows="3" readonly id="seedWords2"></textarea>
-                          <div id="pMessage5" class="form-text text-success mt-3 mb-2" style="display: none;">Seed riječi su kopirane.</div>
+                          <div id="pMessage5" class="form-text text-success mt-3 mb-2" style="display: none;" data-t>settings.seedWordsCopied</div>
                           <div id="pMessage8" class="form-text text-danger mt-3 mb-2" style="display: none;"></div>
                         </div>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
-                           <i class="bi bi-lightbulb-fill"></i>&nbsp;&nbsp;Prikaži
+                           <i class="bi bi-lightbulb-fill"></i>&nbsp;&nbsp;<span data-t>settings.show</span>
                         </button>
                         <button class="btn btn-primary ms-3" disabled id="buttonSeedCopy">
-                           <i class="bi bi-files"></i>&nbsp;&nbsp;Kopiraj
+                           <i class="bi bi-files"></i>&nbsp;&nbsp;<span data-t>settings.copy</span>
                         </button>
                      </form>
                   </div>
@@ -415,17 +415,17 @@
                   <div class="col-12 col-lg-6">
                      <form action="javascript:void(0)">
                         <div class="mb-3">
-                           <label class="form-label fw-bold">Nova lozinka</label>
+                           <label class="form-label fw-bold" data-t>settings.newPassword</label>
                            <input type="password" class="form-control" id="password6">
                          </div>
                         <div class="mb-3">
-                          <label class="form-label fw-bold">Ponovi novu lozinku</label>
+                          <label class="form-label fw-bold" data-t>settings.repeatNewPassword</label>
                           <input type="password" class="form-control" id="password7">
                         </div>
                         <div id="pMessage6" class="form-text text-danger mb-2" style="display: none;"></div>
                         <div id="pMessage7" class="form-text text-success mb-2" style="display: none;"></div>
                         <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
-                           <i class="bi bi-lock-fill"></i>&nbsp;&nbsp;Promijeni lozinku
+                           <i class="bi bi-lock-fill"></i>&nbsp;&nbsp;<span data-t>settings.changePassword</span>
                         </button>
                      </form>
                   </div>
@@ -435,7 +435,7 @@
                   <div class="col-0 col-lg-3"></div>
                   <div class="col-12 col-lg-6">
                      <button class="btn btn-danger btn-lg w-100" id="buttonLogout">
-                        <i class="bi bi-power"></i>&nbsp;&nbsp;Odlogiraj se
+                        <i class="bi bi-power"></i>&nbsp;&nbsp;<span data-t>settings.logout</span>
                      </button>
                   </div>
                   <div class="col-0 col-lg-3"></div>
@@ -456,18 +456,18 @@
          <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="passwordModalLabel">Unesi lozinku</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Odustani"></button>
+               <h5 class="modal-title" id="passwordModalLabel" data-t>modals.title1</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" data-attr-t data-attr-t-interpolate aria-label-t="{{modals.cancel}}"></button>
             </div>
             <div class="modal-body pt-1">
                <input type="password" class="form-control" id="password8">
             </div>
             <div class="modal-footer justify-content-between">
                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                  <i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;Odustani
+                  <i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;<span data-t>modals.cancel</span>
                </button>
                <button type="button" class="btn btn-danger" id="buttonShowSeed" data-bs-dismiss="modal">
-                  <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;Nastavi
+                  <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;<span data-t>modals.continue</span>
                </button>
             </div>
          </div>
@@ -479,18 +479,18 @@
          <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-header">
-               <h5 class="modal-title" id="passwordModalLabel">Unesi staru lozinku</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Odustani"></button>
+               <h5 class="modal-title" id="passwordModalLabel" data-t>modals.title2</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" data-attr-t data-attr-t-interpolate aria-label-t="{{modals.cancel}}"></button>
             </div>
             <div class="modal-body pt-1">
                <input type="password" class="form-control" id="password9">
             </div>
             <div class="modal-footer justify-content-between">
                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                  <i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;Odustani
+                  <i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;<span data-t>modals.cancel</span>
                </button>
                <button type="button" class="btn btn-danger" id="buttonChangePass" data-bs-dismiss="modal">
-                  <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;Nastavi
+                  <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;<span data-t>modals.continue</span>
                </button>
             </div>
          </div>

@@ -34,7 +34,7 @@
       "aintTitle": "AINT Tokeni",
       "aintCurrency": "AINTa",
       "aintEarnings": "Akumulirana AINT zarada",
-      "aintCollectEarnings": "Povuci zaradu"
+      "aintCollectEarnings": "Povuci"
     },
     "receive": {
       "account": "Račun",
@@ -54,6 +54,22 @@
       "amountWaves": "Iznos WAVESa",
       "exchangeButton": "Zamijeni",
       "exchangeAddress": "Adresa mjenjačnice"
+    },
+    "settings": {
+      "seedWords": "Seed riječi za backup",
+      "seedWordsCopied": "Seed riječi su kopirane.",
+      "show": "Prikaži",
+      "copy": "Kopiraj",
+      "newPassword": "Nova lozinka",
+      "repeatNewPassword": "Ponovi novu lozinku",
+      "changePassword": "Promijeni lozinku",
+      "logout": "Odlogiraj se"
+    },
+    "modals": {
+      "title1": "Unesi lozinku",
+      "cancel": "Odustani",
+      "continue": "Nastavi",
+      "title2": "Unesi staru lozinku"
     }
   }
   
