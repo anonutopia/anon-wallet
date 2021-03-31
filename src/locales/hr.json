@@ -1,0 +1,18 @@
+{
+    "html": {
+      "title": "Kriptokuna Novčanik - kriptovaluta u rukama običnih ljudi",
+      "description": "Kriptokuna je stabilna kriptovaluta koja ima vrijednost 1:1 s kunom što ju u stvarnosti čini decentraliziranim bankovnim računom pod kontrolom njenih korisnika.",
+      "url": "https://novcanik.kriptokuna.com",
+      "logoUrl": "./img/logo-ahrk.png"
+    },
+    "login": {
+      "password": "Unesi lozinku"
+    },
+    "newAccount": {
+      "newTitle": "Novi Kriptokuna račun",
+      "register": "Registriraj se"
+    },
+    "password": "Lozinka",
+    "repeatPassword": "Ponovi lozinku"
+  }
+  

@@ -3,17 +3,17 @@
 <head>
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <title>Kriptokuna Novčanik</title>
-   <meta name="description" content="Kriptokuna je stabilna kriptovaluta koja ima vrijednost 1:1 s kunom što ju u stvarnosti čini decentraliziranim bankovnim računom pod kontrolom njenih korisnika.">
+   <title data-t>html.title</title>
+   <meta name="description" data-attr-t data-attr-t-interpolate content-t="{{html.description}}">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="icon" type="image/png" href="./img/favicon.png" />
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
    <link rel="stylesheet" href="./custom.css">
-   <meta property="og:url"                content="https://novcanik.kriptokuna.com/" />
+   <meta property="og:url" data-attr-t data-attr-t-interpolate content-t="{{html.url}}"/>
    <meta property="og:type"               content="article" />
-   <meta property="og:title"              content="Kriptokuna - kriptovaluta u rukama običnih ljudi" />
-   <meta property="og:description"        content="Kriptokuna je stabilna kriptovaluta koja ima vrijednost 1:1 s kunom što ju u stvarnosti čini decentraliziranim bankovnim računom pod kontrolom njenih korisnika." />
+   <meta property="og:title" data-attr-t data-attr-t-interpolate content-t="{{html.title}}"/>
+   <meta property="og:description" data-attr-t data-attr-t-interpolate content-t="{{html.description}}"/>
    <meta property="og:image"              content="https://www.kriptokuna.com/static/img/fb.png?v=1.0.0" />
 </head>
 
@@ -28,7 +28,7 @@
                <div class="row">
                   <div class="col"></div>
                   <div class="col-10">
-                     <img src="./img/logo.png" alt="Kriptokuna Novčanik" class="img-fluid" style="max-height: 70px;">
+                     <img src-t="{{html.logoUrl}}" data-attr-t data-attr-t-interpolate alt-t="{{html.title}}" class="img-fluid" style="max-height: 70px;">
                   </div>
                   <div class="col"></div>
                </div>
@@ -53,13 +53,13 @@
             <div class="bg-light p-md-5 p-5 border shadow-lg my-5">
                <div class="row">
                   <div class="col-12">
-                     <img src="./img/logo.png" alt="Kriptokuna Novčanik" class="img-fluid" style="max-height: 70px;">
+                     <img src-t="{{html.logoUrl}}" data-attr-t data-attr-t-interpolate alt-t="{{html.title}}" class="img-fluid" style="max-height: 70px;">
                   </div>
                </div>
                <div class="row mt-4">
                   <form action="javascript:void(0)" id="loginForm">
                      <div class="mb-4">
-                        <label class="form-label fw-bold">Unesi lozinku</label>
+                        <label class="form-label fw-bold" data-t>login.password</label>
                         <input type="password" class="form-control" id="password1">
                         <div id="pMessage3" class="form-text text-danger mt-4" style="display: none;"></div>
                      </div>
@@ -82,27 +82,27 @@
             <div class="bg-light p-md-5 p-3 border shadow-lg my-5">
                <div class="row">
                   <div class="col-12">
-                     <img src="./img/logo.png" alt="Kriptokuna Novčanik" class="img-fluid" style="max-height: 70px;">
+                     <img src-t="{{html.logoUrl}}" data-attr-t data-attr-t-interpolate alt-t="{{html.title}}" class="img-fluid" style="max-height: 70px;">
                   </div>
                </div>
                <div class="row mt-3" id="newAccount">
-                  <h4 class="my-3"><u>Novi Kriptokuna račun</u></h4>
+                  <h4 class="my-3" data-t><u>newAccount.newTitle</u></h4>
                   <form action="javascript:void(0)">
                      <div class="mb-3">
-                        <label class="form-label fw-bold">Lozinka</label>
+                        <label class="form-label fw-bold" data-t>password</label>
                         <input type="password" class="form-control" id="password2">
                       </div>
                      <div class="mb-4">
-                       <label class="form-label fw-bold">Ponovi lozinku</label>
+                       <label class="form-label fw-bold" data-t>repeatPassword</label>
                        <input type="password" class="form-control" id="password3">
                        <div id="pMessage1" class="form-text text-danger mt-4" style="display: none;"></div>
                      </div>
                      <div class="justify-content-between d-flex">
                         <button class="btn btn-success" id="buttonRegister">
-                           <i class="bi bi-person-plus-fill"></i>&nbsp;Registriraj se
+                           <i class="bi bi-person-plus-fill"></i>&nbsp;<span data-t>newAccount.register</span>
                         </button>
                         <button class="btn btn-secondary" id="buttonShowExisting">
-                           <i class="bi bi-person-check-fill"></i>&nbsp;Postojeći
+                           <i class="bi bi-person-check-fill"></i>&nbsp;Import
                         </button>
                      </div>
                   </form>
@@ -111,11 +111,11 @@
                   <h4 class="my-3"><u>Postojeći Kriptokuna račun</u></h4>
                   <form action="javascript:void(0)">
                      <div class="mb-3">
-                        <label class="form-label fw-bold">Lozinka</label>
+                        <label class="form-label fw-bold" data-t>password</label>
                         <input type="password" class="form-control" id="password4">
                       </div>
                      <div class="mb-3">
-                       <label class="form-label fw-bold">Ponovi lozinku</label>
+                       <label class="form-label fw-bold" data-t>repeatPassword</label>
                        <input type="password" class="form-control" id="password5">
                      </div>
                      <div class="mb-4">
@@ -125,7 +125,7 @@
                       </div>
                       <div class="justify-content-between d-flex">
                         <button class="btn btn-success" id="buttonImport">
-                           <i class="bi bi-person-check-fill"></i>&nbsp;Unesi račun
+                           <i class="bi bi-person-check-fill"></i>&nbsp;Import računa
                         </button>
                         <button class="btn btn-secondary" id="buttonNewAccount">
                            <i class="bi bi-person-plus-fill"></i>&nbsp;Novi
@@ -145,7 +145,7 @@
       <!-- Header -->
       <div class="row py-5">
          <div class="col-7 g-0">
-            <img src="./img/logo.png" alt="Kriptokuna Novčanik" class="img-fluid" style="max-height: 70px;">
+            <img src-t="{{html.logoUrl}}" data-attr-t data-attr-t-interpolate alt-t="{{html.title}}" class="img-fluid" style="max-height: 70px;">
          </div>
          <div class="col-2 col-sm-2 col-lg-3"></div>
          <div class="col-1 text-end fs-1 mt-auto" style="margin-bottom: -5px;">
