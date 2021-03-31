@@ -30,7 +30,11 @@
       "currency": "kn",
       "collectEarnings": "Povuci kamatu",
       "feeMessage": "Naknada za povlačenje iznosi 1 kn.",
-      "collectSuccess": "Povlačenje je uspješno izvršeno."
+      "collectSuccess": "Povlačenje je uspješno izvršeno.",
+      "aintTitle": "AINT Tokeni",
+      "aintCurrency": "AINTa",
+      "aintEarnings": "Akumulirana AINT zarada",
+      "aintCollectEarnings": "Povuci zaradu"
     }
   }
   

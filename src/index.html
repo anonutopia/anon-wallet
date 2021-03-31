@@ -193,24 +193,24 @@
             </div>
             <div id="tab2" style="display: none;">
                <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
-                  <h3 class="p-2 text-center text-secondary border-bottom"><strong>AINT Tokeni</strong></h3>
-                  <span class="display-1 px-2 fw-bold" id="balanceAint">0.00000000</span><span class="fs-3">AINTa</span>
+                  <h3 class="p-2 text-center text-secondary border-bottom"><strong data-t>home.aintTitle</strong></h3>
+                  <span class="display-1 px-2 fw-bold" id="balanceAint">0.00000000</span><span class="fs-3" data-t>home.aintCurrency</span>
                </div>
                <div class="bg-light px-md-5 p-3 mt-5 border shadow-lg" style="color: #515151;">
-                     <h6 class="p-2 text-center text-secondary border-bottom"><strong>Akumulirana AINT zarada</strong></h6>
+                     <h6 class="p-2 text-center text-secondary border-bottom"><strong data-t>home.aintEarnings</strong></h6>
                      <div class="row p-0">
                         <div class="col p-0 mt-auto">
                            <span class="display-6 p-2 fw-bold" id="accumulatedEarnings">0.00</span><span class="fs-3">WAVES</span><br>
                         </div>
                         <div class="col text-end pt-2 mt-auto">
                            <button class="btn btn-success" id="buttonCollectEarnings">
-                              <i class="bi bi-arrow-down-circle-fill"></i>&nbsp;&nbsp;Povuci zaradu
+                              <i class="bi bi-arrow-down-circle-fill"></i>&nbsp;&nbsp;<span data-t>home.aintCollectEarnings</span>
                            </button>
                         </div>
                      </div>
                      <div class="row p-0 mt-2">
-                        <div id="pMessage11" class="form-text text-danger text-end">Naknada za povlačenje iznosi 1 kn.</div>
-                        <div id="pMessage12" class="form-text text-success text-end" style="display: none;">Povlačenje je uspješno izvršeno.</div>
+                        <div id="pMessage11" class="form-text text-danger text-end" data-t>home.feeMessage</div>
+                        <div id="pMessage12" class="form-text text-success text-end" style="display: none;" data-t>home.collectSuccess</div>
                      </div>
                </div>
             </div>
