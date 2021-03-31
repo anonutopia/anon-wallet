@@ -35,6 +35,11 @@
       "aintCurrency": "AINTa",
       "aintEarnings": "Akumulirana AINT zarada",
       "aintCollectEarnings": "Povuci zaradu"
+    },
+    "receive": {
+      "account": "Račun",
+      "message": "Račun je kopiran.",
+      "qr": "QR Kod"
     }
   }
   
