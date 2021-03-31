@@ -269,14 +269,12 @@
                <div class="row">
                   <div class="col-0 col-lg-3"></div>
                   <div class="col-12 col-lg-6">
-                     <div class="alert alert-danger" role="alert">
-                        Cijena transakcije je 0.05 kn (5 lipa), neovisno o iznosu.
-                     </div>
+                     <div class="alert alert-danger" role="alert" data-t>send.feeMessage</div>
                      <form action="javascript:void(0)">
                         <div class="mb-3">
-                           <label class="form-label fw-bold">Račun</label>
+                           <label class="form-label fw-bold" data-t>receive.account</label>
                            <div class="input-group mb-3 input-group-sm">
-                              <input type="text" class="form-control" placeholder="Račun" aria-label="Račun" id="addressRec">
+                              <input type="text" class="form-control" data-attr-t data-attr-t-interpolate placeholder-t="{{send.amount}}" aria-label-t="{{send.amount}}" id="addressRec">
                               <div class="input-group-append">
                                  <button class="btn btn-primary" type="button" id="qrButton">
                                     <i class="bi bi-upc-scan"></i>
@@ -285,14 +283,14 @@
                            </div>
                         </div>
                         <div class="mb-4">
-                           <label class="form-label fw-bold">Iznos</label>
-                           <input type="text" class="form-control" placeholder="Iznos kuna" aria-label="Iznos kuna" id="amount">
+                           <label class="form-label fw-bold" data-t>send.amount</label>
+                           <input type="text" class="form-control" data-attr-t data-attr-t-interpolate placeholder-t="{{send.amount2}}" aria-label-t="{{send.amount2}}" id="amount">
                         </div>
                         <div id="sendError" class="form-text text-danger" style="display: none;"></div>
-                        <div id="sendSuccess" class="form-text text-success mt-3 mb-2" style="display: none;">Iznos je uspješno poslan.</div>
+                        <div id="sendSuccess" class="form-text text-success mt-3 mb-2" style="display: none;" data-t>send.sendMessage</div>
                         <div class="d-grid mt-4">
                            <button class="btn btn-danger btn-block btn-lg" id="buttonSend">
-                              <i class="bi bi-arrow-up-right-circle-fill"></i>&nbsp;&nbsp;Pošalji
+                              <i class="bi bi-arrow-up-right-circle-fill"></i>&nbsp;&nbsp;<span data-t>send.sendButton</span>
                            </button>
                         </div>
                      </form>
@@ -341,25 +339,25 @@
                   <div class="col-12 col-lg-4">
                      <ul class="nav nav-tabs mb-4">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="javascript:void(0)" id="exButton1">U kriptokune</a>
+                          <a class="nav-link active" aria-current="page" href="javascript:void(0)" id="exButton1" data-t>exchange.tab1</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="javascript:void(0)" id="exButton2">U kune</a>
+                          <a class="nav-link" href="javascript:void(0)" id="exButton2" data-t>exchange.tab2</a>
                         </li>
                      </ul>
                      <div id="exTab1">
-                        <label class="form-label fw-bold">Iznos WAVESa</label>
+                        <label class="form-label fw-bold" data-t>exchange.amountWaves</label>
                         <input type="text" class="form-control mb-3 mt-3" readonly value="" id="balanceWaves1">
                         <div id="exchangeSuccess1" class="form-text text-success" style="display: none;"></div>
                         <div id="exchangeError1" class="form-text text-danger" style="display: none;"></div>
                         <button type="button" class="btn btn-success mt-3" id="buttonExchange1">
-                           <i class="bi bi-arrow-down-up"></i>&nbsp;&nbsp;Zamijeni
+                           <i class="bi bi-arrow-down-up"></i>&nbsp;&nbsp;<span data-t>exchange.exchangeButton</span>
                         </button>
                      </div>
                      <div id="exTab2" style="display: none;">
-                        <label class="form-label fw-bold">Adresa mjenjačnice</label>
+                        <label class="form-label fw-bold" data-t>exchange.exchangeAddress</label>
                         <input type="text" class="form-control mt-3 mb-2" value="" id="exchangeAddress">
-                        <label class="form-label fw-bold mt-3">Iznos WAVESa</label>
+                        <label class="form-label fw-bold mt-3" data-t>exchange.amountWaves</label>
                         <div class="input-group mb-3 mt-3">
                            <input type="text" class="form-control" readonly value="" id="balanceWaves2">
                            <div class="input-group-append">
@@ -371,7 +369,7 @@
                         <div id="exchangeSuccess2" class="form-text text-success" style="display: none;"></div>
                         <div id="exchangeError2" class="form-text text-danger" style="display: none;"></div>
                         <button type="button" class="btn btn-danger mt-3" id="buttonExchange2">
-                           <i class="bi bi-arrow-up-right-circle-fill"></i>&nbsp;&nbsp;Pošalji
+                           <i class="bi bi-arrow-up-right-circle-fill"></i>&nbsp;&nbsp;<span data-t>send.sendButton</span>
                         </button>
                      </div>
                   </div>

@@ -40,6 +40,20 @@
       "account": "Račun",
       "message": "Račun je kopiran.",
       "qr": "QR Kod"
+    },
+    "send": {
+      "feeMessage": "Cijena transakcije je 0.05 kn (5 lipa), neovisno o iznosu.",
+      "amount": "Iznos",
+      "amount2": "Iznos kuna",
+      "sendMessage": "Iznos je uspješno poslan.",
+      "sendButton": "Pošalji"
+    },
+    "exchange": {
+      "tab1": "U kriptokune",
+      "tab2": "U kune",
+      "amountWaves": "Iznos WAVESa",
+      "exchangeButton": "Zamijeni",
+      "exchangeAddress": "Adresa mjenjačnice"
     }
   }
   
