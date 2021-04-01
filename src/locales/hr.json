@@ -47,6 +47,7 @@
       "feeMessage": "Cijena transakcije je 0.05 kn (5 lipa), neovisno o iznosu.",
       "amount": "Iznos",
       "amount2": "Iznos kuna",
+      "address": "Addresa / broj računa",
       "sendMessage": "Iznos je uspješno poslan.",
       "sendButton": "Pošalji"
     },

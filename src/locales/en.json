@@ -47,6 +47,7 @@
     "feeMessage": "Transaction fee is 0.3 ANOTEs no matter the amount.",
     "amount": "Amount",
     "amount2": "Amount ANOTEs",
+    "address": "Address",
     "sendMessage": "The amount was sent successfully.",
     "sendButton": "Send"
   },
