@@ -73,7 +73,37 @@
       "title2": "Unesi staru lozinku"
     },
     "app": {
-      "title": "test"
+      "error": "Dogodila se greška. Pokušajte ponovo.",
+      "exchange": {
+        "success": "Zamjena je uspješno napravljena.",
+        "sendSuccess": "Tokeni su uspješno poslani u mjenjačnicu.",
+        "needWaves": "Za ovu radnju potrebno je imati WAVES tokene.",
+        "addressRequired": "Adresa mjenjačnice je obavezna.",
+        "copySuccess": "Iznos je uspješno kopiran."
+      },
+      "collectAHRK": {
+        "notEnough": "Nemate dovoljno kuna za povlačenje kamate."
+      },
+      "login": {
+        "wrongPass": "Lozinka je pogrešna, pokušajte ponovo.",
+        "passRequired": "Lozinka je obavezna."
+      },
+      "qr": {
+        "message": "Skeniranje QR koda bit će dostupno u slijedećoj verziji."
+      },
+      "changePass": {
+        "success": "Lozinka je uspješno promijenjena.",
+        "oldRequired": "Stara lozinka je obavezna."
+      },
+      "send": {
+        "notEnough": "Nemate dovoljno novca na računu. Naknada iznosi 5 lipa.",
+        "bothRequired": "Oba polja su obavezna"
+      },
+      "import": {
+        "seedRequired": "Seed riječi su obavezne."
+      },
+      "bothPassRequired": "Oba polja lozinke su obavezna.",
+      "passwordsDontMatch": "Prva i druga lozinka se ne podudaraju."
     }
   }
   

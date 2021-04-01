@@ -72,9 +72,9 @@ class Wallet {
                         attachment: libs.crypto.base58Encode(libs.crypto.stringToBytes('exchange'))
                     }).broadcast();
                     if (id == "1") {
-                        $("#exchangeSuccess" + id).html("Zamjena je uspješno napravljena.");
+                        $("#exchangeSuccess" + id).html(t.exchange.success);
                     } else {
-                        $("#exchangeSuccess" + id).html("Tokeni su uspješno poslani u mjenjačnicu.");
+                        $("#exchangeSuccess" + id).html(t.exchange.sendSuccess);
                     }
                     $("#exchangeSuccess" + id).fadeIn(function(){
                         setTimeout(function(){
@@ -83,7 +83,7 @@ class Wallet {
                         }, 2000);
                     });
                 } catch (e) {
-                    $("#exchangeError" + id).html("Dogodila se greška. Pokušajte ponovo.");
+                    $("#exchangeError" + id).html(t.error);
                     $("#exchangeError" + id).fadeIn(function(){
                         setTimeout(function(){
                             $("#exchangeError" + id).fadeOut();
@@ -92,7 +92,7 @@ class Wallet {
                     console.log(e.message)
                 }
             } else {
-                $("#exchangeError" + id).html("Za ovu radnju potrebno je imati WAVES tokene.");
+                $("#exchangeError" + id).html(t.exchange.needWaves);
                 $("#exchangeError" + id).fadeIn(function(){
                     setTimeout(function(){
                         $("#exchangeError" + id).fadeOut();
@@ -137,9 +137,9 @@ class Wallet {
             }
         } catch (error) {
             if (error.error == 112) {
-                $("#pMessage9").html("Nemate dovoljno kuna za povlačenje kamate.");
+                $("#pMessage9").html(t.collectAHRK.notEnough);
             } else {
-                $("#pMessage9").html("Dogodila se greška. Pokušajte ponovo.");
+                $("#pMessage9").html(t.error);
                 console.log(error);
             }
         }
@@ -161,15 +161,15 @@ class Wallet {
                     this.showHomeAfterLogin();
                     this.getInterestScript();
                 } catch (e) {
-                    $("#pMessage3").html("Lozinka je pogrešna, pokušajte ponovo.");
+                    $("#pMessage3").html(t.login.wrongPass);
                     $("#pMessage3").fadeIn();
                 }
             } else {
-                $("#pMessage3").html("Lozinka je pogrešna, pokušajte ponovo.");
+                $("#pMessage3").html(t.login.wrongPass);
                 $("#pMessage3").fadeIn();
             }
         } else {
-            $("#pMessage3").html("Lozinka je obavezna.");
+            $("#pMessage3").html(t.login.passRequired);
             $("#pMessage3").fadeIn();
         }
     }
@@ -183,7 +183,7 @@ class Wallet {
     }
 
     qrscan() {
-        $("#sendError").html("Skeniranje QR koda bit će dostupno u slijedećoj verziji.");
+        $("#sendError").html(t.qr.message);
         $("#sendError").fadeIn(function(){
             setTimeout(function(){
                 $("#sendError").fadeOut();
@@ -205,7 +205,7 @@ class Wallet {
                     this.setCookies();
                     $("#password6").val("");
                     $("#password7").val("");
-                    $("#pMessage7").html("Lozinka je uspješno promijenjena.");
+                    $("#pMessage7").html(t.changePass.success);
                     $("#pMessage7").fadeIn(function(){
                         setTimeout(function(){
                             $("#pMessage7").fadeOut();
@@ -214,11 +214,11 @@ class Wallet {
                 }
             } else {
                 $("#password9").val("");
-                $("#pMessage6").html("Lozinka je pogrešna, pokušajte ponovo.");
+                $("#pMessage6").html(t.login.wrongPass);
                 $("#pMessage6").fadeIn();
             }
         } else {
-            $("#pMessage6").html("Stara lozinka je obavezna.");
+            $("#pMessage6").html(t.changePass.oldRequired);
             $("#pMessage6").fadeIn();
         }
     }
@@ -234,7 +234,7 @@ class Wallet {
             Cookies.set("seedSaved", "true", { expires: 365*24*10 });
             $("#seedWarning").hide();
         } else {
-            $("#pMessage8").html("Lozinka je pogrešna. Pokušajte ponovo.");
+            $("#pMessage8").html(t.login.wrongPass);
             $("#pMessage8").fadeIn(function(){
                 setTimeout(function(){
                     $("#pMessage8").fadeOut();
@@ -265,14 +265,14 @@ class Wallet {
                 });
             } catch (e) {
                 if (e.error == 112) {
-                    $("#sendError").html("Nemate dovoljno novca na računu. Naknada iznosi 5 lipa.");
+                    $("#sendError").html(t.send.notEnough);
                     $("#sendError").fadeIn(function(){
                         setTimeout(function(){
                             $("#sendError").fadeOut();
                         }, 2000);
                     });
                 } else {
-                    $("#sendError").html("Dogodila se greška. Pokušajte ponovo.");
+                    $("#sendError").html(t.error);
                     $("#sendError").fadeIn(function(){
                         setTimeout(function(){
                             $("#sendError").fadeOut();
@@ -282,7 +282,7 @@ class Wallet {
                 }
             }
         } else {
-            $("#sendError").html("Oba polja su obavezna");
+            $("#sendError").html(t.send.bothRequired);
             $("#sendError").fadeIn(function(){
                 setTimeout(function(){
                     $("#sendError").fadeOut();
@@ -316,7 +316,7 @@ class Wallet {
                 this.showHomeAfterRegister();
                 this.getInterestScript();
             } else {
-                $("#pMessage2").html("Seed riječi su obavezne.");
+                $("#pMessage2").html(t.import.seedRequired);
                 $("#pMessage2").fadeIn();
             }
         }
@@ -643,7 +643,7 @@ $("#buttonExchange2").on( "click", function() {
     if (address) {
         wallet.exchange("2", address);
     } else {
-        $("#exchangeError2").html("Adresa mjenjačnice je obavezna.");
+        $("#exchangeError2").html(t.exchange.addressRequired);
         $("#exchangeError2").fadeIn(function(){
             setTimeout(function(){
                 $("#exchangeError2").fadeOut();
@@ -687,7 +687,7 @@ $("#buttonSeedCopy").on( "click", function() {
 $("#buttonCopyAmount").on( "click", function() {
     var amount = $("#balanceWaves2").val();
     copy(String(amount));
-    $("#exchangeSuccess2").html("Iznos je uspješno kopiran.");
+    $("#exchangeSuccess2").html(t.exchange.copySuccess);
     $("#exchangeSuccess2").fadeIn(function(){
         setTimeout(function(){
             $("#exchangeSuccess2").fadeOut();
@@ -699,6 +699,29 @@ function createTranslation() {
     var lang = $("#lang").val();
     $.getJSON("locales/" + lang + ".json", function( data ) {
         t = data.app;
+
+        console.log(t.exchange.success);
+        console.log(t.exchange.sendSuccess);
+        console.log(t.error);
+        console.log(t.exchange.needWaves);
+        console.log(t.collectAHRK.notEnough);
+        console.log(t.error);
+        console.log(t.login.wrongPass);
+        console.log(t.login.wrongPass);
+        console.log(t.login.passRequired);
+        console.log(t.qr.message);
+        console.log(t.changePass.success);
+        console.log(t.login.wrongPass);
+        console.log(t.changePass.oldRequired);
+        console.log(t.login.wrongPass);
+        console.log(t.send.notEnough);
+        console.log(t.error);
+        console.log(t.send.bothRequired);
+        console.log(t.import.seedRequired);
+        console.log(t.exchange.addressRequired);
+        console.log(t.exchange.copySuccess);
+        console.log(t.bothPassRequired);
+        console.log(t.passwordsDontMatch);
     });
 }
 
@@ -716,7 +739,7 @@ function passwordsEqual(p1id, p2id, mid):boolean {
     var p2 = $("#" + p2id).val();
 
     if (!p1 || !p2) {
-        $("#" + mid).html("Oba polja lozinke su obavezna.");
+        $("#" + mid).html(t.bothPassRequired);
         $("#" + mid).fadeIn();
         return false;
     }
@@ -724,7 +747,7 @@ function passwordsEqual(p1id, p2id, mid):boolean {
     if (p1 == p2) {
         return true;
     } else {
-        $("#" + mid).html("Prva i druga lozinka se ne podudaraju.");
+        $("#" + mid).html(t.passwordsDontMatch);
         $("#" + mid).fadeIn();
         return false;
     }
