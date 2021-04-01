@@ -2,7 +2,7 @@
   "lang": "en",
   "html": {
     "title": "Anote Wallet",
-    "description": "Kriptokuna je stabilna kriptovaluta koja ima vrijednost 1:1 s kunom što ju u stvarnosti čini decentraliziranim bankovnim računom pod kontrolom njenih korisnika.",
+    "description": "Anote crypto currency can be mined, sent, received, exchanged or sold and used right from the start to purchase ads on our Telegram ad channel - AnonShout.",
     "url": "https://wallet.anonutopia.com",
     "logoUrl": "./img/logo.png"
   },
@@ -12,30 +12,30 @@
   "newAccount": {
     "newTitle": "New Anote Account",
     "register": "Register",
-    "importTitle": "Postojeći Kriptokuna račun",
-    "seed": "Seed riječi",
-    "import": "Import računa",
-    "new": "Novi"
+    "importTitle": "Import Anote account",
+    "seed": "Seed words",
+    "import": "Import account",
+    "new": "New account"
   },
   "password": "Password",
   "repeatPassword": "Repeat Password",
   "main": {
-    "helpUrl": "https://t.me/Kriptokuna"
+    "helpUrl": "https://t.me/Anonutopia"
   },
   "home": {
-    "seedWarning": "Ne zaboravite spremiti seed riječi svog računa. Možete ih pronaći u postavkama nakon što upišete lozinku. <strong><u>Sami odgovarate za svoj račun.</u></strong>",
-    "tab1": "Kriptokuna",
-    "tab2": "Bankar",
-    "balance": "Stanje računa",
-    "earnings": "Akumulirana kamata",
-    "currency": "kn",
-    "collectEarnings": "Povuci kamatu",
-    "feeMessage": "Naknada za povlačenje iznosi 1 kn.",
-    "collectSuccess": "Povlačenje je uspješno izvršeno.",
-    "aintTitle": "AINT Tokeni",
-    "aintCurrency": "AINTa",
-    "aintEarnings": "Akumulirana AINT zarada",
-    "aintCollectEarnings": "Povuci"
+    "seedWarning": "Save your seed words for backup purposes. You can find them in settings. <strong><u>You are responsible for your account.</u></strong>",
+    "tab1": "Anote",
+    "tab2": "Banker",
+    "balance": "Balance",
+    "earnings": "Accumulated earnings",
+    "currency": "ANOTE",
+    "collectEarnings": "Withdraw",
+    "feeMessage": "Withdrawal fee is 1 ANOTE",
+    "collectSuccess": "Withdrawal was successful.",
+    "aintTitle": "AINT Tokens",
+    "aintCurrency": "AINTs",
+    "aintEarnings": "Accumulated AINT earnings",
+    "aintCollectEarnings": "Withdraw"
   },
   "receive": {
     "account": "Račun",
