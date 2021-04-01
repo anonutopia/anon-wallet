@@ -4,7 +4,8 @@
     "title": "Anote Wallet",
     "description": "Anote crypto currency can be mined, sent, received, exchanged or sold and used right from the start to purchase ads on our Telegram ad channel - AnonShout.",
     "url": "https://wallet.anonutopia.com",
-    "logoUrl": "./img/logo.png"
+    "logoUrl": "./img/logo.png",
+    "fbImg": "https://www.anonutopia.com/static/img/fb.png?v=1.0.0"
   },
   "login": {
     "password": "Enter password"
@@ -38,16 +39,16 @@
     "aintCollectEarnings": "Withdraw"
   },
   "receive": {
-    "account": "Račun",
-    "message": "Račun je kopiran.",
-    "qr": "QR Kod"
+    "account": "Account Address",
+    "message": "Account address is copied.",
+    "qr": "QR Code"
   },
   "send": {
-    "feeMessage": "Cijena transakcije je 0.05 kn (5 lipa), neovisno o iznosu.",
-    "amount": "Iznos",
-    "amount2": "Iznos kuna",
-    "sendMessage": "Iznos je uspješno poslan.",
-    "sendButton": "Pošalji"
+    "feeMessage": "Transaction fee is 0.3 ANOTEs no matter the amount.",
+    "amount": "Amount",
+    "amount2": "Amount ANOTEs",
+    "sendMessage": "The amount was sent successfully.",
+    "sendButton": "Send"
   },
   "exchange": {
     "tab1": "U kriptokune",
@@ -57,52 +58,52 @@
     "exchangeAddress": "Adresa mjenjačnice"
   },
   "settings": {
-    "seedWords": "Seed riječi za backup",
-    "seedWordsCopied": "Seed riječi su kopirane.",
-    "show": "Prikaži",
-    "copy": "Kopiraj",
-    "newPassword": "Nova lozinka",
-    "repeatNewPassword": "Ponovi novu lozinku",
-    "changePassword": "Promijeni lozinku",
-    "logout": "Odlogiraj se"
+    "seedWords": "Seed Words for Backup",
+    "seedWordsCopied": "Seed words are copied.",
+    "show": "Show Words",
+    "copy": "Copy Words",
+    "newPassword": "New Password",
+    "repeatNewPassword": "Repeat New Password",
+    "changePassword": "Change Password",
+    "logout": "Sign Out"
   },
   "modals": {
-    "title1": "Unesi lozinku",
-    "cancel": "Odustani",
-    "continue": "Nastavi",
-    "title2": "Unesi staru lozinku"
+    "title1": "Enter Password",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "title2": "Enter Old Password"
   },
   "app": {
-    "error": "Dogodila se greška. Pokušajte ponovo.",
+    "error": "An error happened. Please try again.",
     "exchange": {
-      "success": "Zamjena je uspješno napravljena.",
-      "sendSuccess": "Tokeni su uspješno poslani u mjenjačnicu.",
-      "needWaves": "Za ovu radnju potrebno je imati WAVES tokene.",
-      "addressRequired": "Adresa mjenjačnice je obavezna.",
-      "copySuccess": "Iznos je uspješno kopiran."
+      "success": "Exchange was successful.",
+      "sendSuccess": "Tokens are sent successfully.",
+      "needWaves": "You need to have WAVES tokens for this action.",
+      "addressRequired": "Exchange address is required.",
+      "copySuccess": "The amount is sent successfully."
     },
     "collectAHRK": {
-      "notEnough": "Nemate dovoljno kuna za povlačenje kamate."
+      "notEnough": "You don't have enough to withdraw."
     },
     "login": {
-      "wrongPass": "Lozinka je pogrešna, pokušajte ponovo.",
-      "passRequired": "Lozinka je obavezna."
+      "wrongPass": "Wrong password, please try again.",
+      "passRequired": "Password is required."
     },
     "qr": {
-      "message": "Skeniranje QR koda bit će dostupno u slijedećoj verziji."
+      "message": "Scanning QR code will be available in the next version."
     },
     "changePass": {
-      "success": "Lozinka je uspješno promijenjena.",
-      "oldRequired": "Stara lozinka je obavezna."
+      "success": "Password changed successfully.",
+      "oldRequired": "Old password is required."
     },
     "send": {
-      "notEnough": "Nemate dovoljno novca na računu. Naknada iznosi 5 lipa.",
-      "bothRequired": "Oba polja su obavezna"
+      "notEnough": "You don't have enough on your account, the fee is 0.3 ANOTEs.",
+      "bothRequired": "Both fields are required."
     },
     "import": {
-      "seedRequired": "Seed riječi su obavezne."
+      "seedRequired": "Seed words are required."
     },
-    "bothPassRequired": "Oba polja lozinke su obavezna.",
-    "passwordsDontMatch": "Prva i druga lozinka se ne podudaraju."
+    "bothPassRequired": "Both passwords are required.",
+    "passwordsDontMatch": "Passwords don't match."
   }
 }
