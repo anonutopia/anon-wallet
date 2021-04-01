@@ -699,29 +699,6 @@ function createTranslation() {
     var lang = $("#lang").val();
     $.getJSON("locales/" + lang + ".json", function( data ) {
         t = data.app;
-
-        console.log(t.exchange.success);
-        console.log(t.exchange.sendSuccess);
-        console.log(t.error);
-        console.log(t.exchange.needWaves);
-        console.log(t.collectAHRK.notEnough);
-        console.log(t.error);
-        console.log(t.login.wrongPass);
-        console.log(t.login.wrongPass);
-        console.log(t.login.passRequired);
-        console.log(t.qr.message);
-        console.log(t.changePass.success);
-        console.log(t.login.wrongPass);
-        console.log(t.changePass.oldRequired);
-        console.log(t.login.wrongPass);
-        console.log(t.send.notEnough);
-        console.log(t.error);
-        console.log(t.send.bothRequired);
-        console.log(t.import.seedRequired);
-        console.log(t.exchange.addressRequired);
-        console.log(t.exchange.copySuccess);
-        console.log(t.bothPassRequired);
-        console.log(t.passwordsDontMatch);
     });
 }
 
