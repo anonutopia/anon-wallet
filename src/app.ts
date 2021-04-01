@@ -58,49 +58,49 @@ class Wallet {
         document.body.appendChild(newScript1);
     }
 
-    async exchange(id, address) {
-        var a = $("#balanceWaves" + id).val();
-        if (a) {
-            var amount: number = +a;
-            if (amount > 0) {
-                try {
-                    amount = amount - 0.001
-                    await this.signer.transfer({
-                        amount: Math.floor(amount * SATINBTC),
-                        recipient: address,
-                        fee: 100000,
-                        attachment: libs.crypto.base58Encode(libs.crypto.stringToBytes('exchange'))
-                    }).broadcast();
-                    if (id == "1") {
-                        $("#exchangeSuccess" + id).html(t.exchange.success);
-                    } else {
-                        $("#exchangeSuccess" + id).html(t.exchange.sendSuccess);
-                    }
-                    $("#exchangeSuccess" + id).fadeIn(function(){
-                        setTimeout(function(){
-                            $("#exchangeAddress").val("");
-                            $("#exchangeSuccess" + id).fadeOut();
-                        }, 2000);
-                    });
-                } catch (e) {
-                    $("#exchangeError" + id).html(t.error);
-                    $("#exchangeError" + id).fadeIn(function(){
-                        setTimeout(function(){
-                            $("#exchangeError" + id).fadeOut();
-                        }, 2000);
-                    });
-                    console.log(e.message)
-                }
-            } else {
-                $("#exchangeError" + id).html(t.exchange.needWaves);
-                $("#exchangeError" + id).fadeIn(function(){
-                    setTimeout(function(){
-                        $("#exchangeError" + id).fadeOut();
-                    }, 2000);
-                });
-            }
-        }
-    }
+    // async exchange(id, address) {
+    //     var a = $("#balanceWaves" + id).val();
+    //     if (a) {
+    //         var amount: number = +a;
+    //         if (amount > 0) {
+    //             try {
+    //                 amount = amount - 0.001
+    //                 await this.signer.transfer({
+    //                     amount: Math.floor(amount * SATINBTC),
+    //                     recipient: address,
+    //                     fee: 100000,
+    //                     attachment: libs.crypto.base58Encode(libs.crypto.stringToBytes('exchange'))
+    //                 }).broadcast();
+    //                 if (id == "1") {
+    //                     $("#exchangeSuccess" + id).html(t.exchange.success);
+    //                 } else {
+    //                     $("#exchangeSuccess" + id).html(t.exchange.sendSuccess);
+    //                 }
+    //                 $("#exchangeSuccess" + id).fadeIn(function(){
+    //                     setTimeout(function(){
+    //                         $("#exchangeAddress").val("");
+    //                         $("#exchangeSuccess" + id).fadeOut();
+    //                     }, 2000);
+    //                 });
+    //             } catch (e) {
+    //                 $("#exchangeError" + id).html(t.error);
+    //                 $("#exchangeError" + id).fadeIn(function(){
+    //                     setTimeout(function(){
+    //                         $("#exchangeError" + id).fadeOut();
+    //                     }, 2000);
+    //                 });
+    //                 console.log(e.message)
+    //             }
+    //         } else {
+    //             $("#exchangeError" + id).html(t.exchange.needWaves);
+    //             $("#exchangeError" + id).fadeIn(function(){
+    //                 setTimeout(function(){
+    //                     $("#exchangeError" + id).fadeOut();
+    //                 }, 2000);
+    //             });
+    //         }
+    //     }
+    // }
 
     async collectInterest(address:string) {
         try {
@@ -331,8 +331,8 @@ class Wallet {
                 $("#balance").html(String(balance.toFixed(2)));
             } else if (asset.assetId == "WAVES") {
                 var balance = asset.amount / SATINBTC;
-                $("#balanceWaves1").val(String(balance.toFixed(8)));
-                $("#balanceWaves2").val(String(balance.toFixed(8)));
+                // $("#balanceWaves1").val(String(balance.toFixed(8)));
+                // $("#balanceWaves2").val(String(balance.toFixed(8)));
             } else if (asset.assetId == AINT) {
                 var balance = asset.amount / SATINBTC;
                 $("#balanceAint").html(String(balance.toFixed(4)));
@@ -458,7 +458,6 @@ const AINTADDRESS = "3PBmmxKhFcDhb8PrDdCdvw2iGMPnp7VuwPy"
 const AINT = "66DUhUoJaoZcstkKpcoN3FUcqjB6v8VJd5ZQd6RsPxhv";
 
 var activeScreen = "home";
-var activeTab = "exTab1";
 var interestScript = "https://n.kriptokuna.com";
 var earningsScript = "https://aint.anonutopia.com";
 var t;
@@ -496,16 +495,16 @@ $("#backFromSend").on( "click", function() {
     });
 });
 
-$("#cards").on( "click", function() {
-    activeScreen = "cards";
+$("#addressBook").on( "click", function() {
+    activeScreen = "addressBook";
     $("#screen-home").fadeOut(function(){
-        $("#screen-cards").fadeIn();
+        $("#screen-addressBook").fadeIn();
     });
 });
 
-$("#backFromCards").on( "click", function() {
+$("#backFromAddressBook").on( "click", function() {
     activeScreen = "home";
-    $("#screen-cards").fadeOut(function(){
+    $("#screen-addressBook").fadeOut(function(){
         $("#screen-home").fadeIn();
     });
 });
@@ -522,24 +521,6 @@ $("#settings").on( "click", function() {
             $("#screen-settings").fadeIn();
         });
     }
-});
-
-$("#exButton1").on( "click", function() {
-    $("#exButton1").toggleClass("active");
-    $("#exButton2").toggleClass("active");
-    $("#" + activeTab).fadeOut(function(){
-        activeTab = "exTab1";
-        $("#" + activeTab).fadeIn();
-    });
-});
-
-$("#exButton2").on( "click", function() {
-    $("#exButton2").toggleClass("active");
-    $("#exButton1").toggleClass("active");
-    $("#" + activeTab).fadeOut(function(){
-        activeTab = "exTab2";
-        $("#" + activeTab).fadeIn();
-    });
 });
 
 $("#tabButton1").on( "click", function() {
@@ -626,30 +607,12 @@ $("#buttonChangePass").on( "click", function() {
     wallet.changePassword();
 });
 
-$("#buttonExchange1").on( "click", function() {
-    wallet.exchange("1", AHRKADDRESS);
-});
-
 $("#buttonCollect").on( "click", function() {
     wallet.collectInterest(AHRKADDRESS);
 });
 
 $("#buttonCollectEarnings").on( "click", function() {
     wallet.collectInterest(AINTADDRESS);
-});
-
-$("#buttonExchange2").on( "click", function() {
-    var address = $("#exchangeAddress").val();
-    if (address) {
-        wallet.exchange("2", address);
-    } else {
-        $("#exchangeError2").html(t.exchange.addressRequired);
-        $("#exchangeError2").fadeIn(function(){
-            setTimeout(function(){
-                $("#exchangeError2").fadeOut();
-            }, 2000);
-        });
-    }
 });
 
 $("#buttonCopy").on( "click", function() {
@@ -680,17 +643,6 @@ $("#buttonSeedCopy").on( "click", function() {
             $("#pMessage5").fadeOut();
             $("#seedWords2").val("");
             $("#buttonSeedCopy").prop('disabled', true);
-        }, 500);
-    });
-});
-
-$("#buttonCopyAmount").on( "click", function() {
-    var amount = $("#balanceWaves2").val();
-    copy(String(amount));
-    $("#exchangeSuccess2").html(t.exchange.copySuccess);
-    $("#exchangeSuccess2").fadeIn(function(){
-        setTimeout(function(){
-            $("#exchangeSuccess2").fadeOut();
         }, 500);
     });
 });

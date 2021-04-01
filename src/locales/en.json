@@ -51,12 +51,8 @@
     "sendMessage": "The amount was sent successfully.",
     "sendButton": "Send"
   },
-  "exchange": {
-    "tab1": "U kriptokune",
-    "tab2": "U kune",
-    "amountWaves": "Iznos WAVESa",
-    "exchangeButton": "Zamijeni",
-    "exchangeAddress": "Adresa mjenjačnice"
+  "addressBook": {
+    "message": "Address book is under the development and it will be available in the next version."
   },
   "settings": {
     "seedWords": "Seed Words for Backup",
@@ -76,13 +72,6 @@
   },
   "app": {
     "error": "An error happened. Please try again.",
-    "exchange": {
-      "success": "Exchange was successful.",
-      "sendSuccess": "Tokens are sent successfully.",
-      "needWaves": "You need to have WAVES tokens for this action.",
-      "addressRequired": "Exchange address is required.",
-      "copySuccess": "The amount is sent successfully."
-    },
     "collectAHRK": {
       "notEnough": "You don't have enough to withdraw."
     },

@@ -51,12 +51,8 @@
       "sendMessage": "Iznos je uspješno poslan.",
       "sendButton": "Pošalji"
     },
-    "exchange": {
-      "tab1": "U kriptokune",
-      "tab2": "U kune",
-      "amountWaves": "Iznos WAVESa",
-      "exchangeButton": "Zamijeni",
-      "exchangeAddress": "Adresa mjenjačnice"
+    "addressBook": {
+      "message": "Adresar je u izradi i bit će dostupan u slijedećoj verziji."
     },
     "settings": {
       "seedWords": "Seed riječi za backup",
@@ -76,13 +72,6 @@
     },
     "app": {
       "error": "Dogodila se greška. Pokušajte ponovo.",
-      "exchange": {
-        "success": "Zamjena je uspješno napravljena.",
-        "sendSuccess": "Tokeni su uspješno poslani u mjenjačnicu.",
-        "needWaves": "Za ovu radnju potrebno je imati WAVES tokene.",
-        "addressRequired": "Adresa mjenjačnice je obavezna.",
-        "copySuccess": "Iznos je uspješno kopiran."
-      },
       "collectAHRK": {
         "notEnough": "Nemate dovoljno kuna za povlačenje kamate."
       },
