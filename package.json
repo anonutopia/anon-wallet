@@ -8,8 +8,10 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "start": "static-i18n -l hr -i hr -i en ./src/ && cp src/custom.css i18n/ && cp src/app.ts i18n/ && cp src/img/* i18n/img/ && cp -R src/locales/ dist/ && concurrently \"npm run tsc:w\" \"parcel ./i18n/index.html\" ",
-    "predeploy": "rm -rf dist && parcel build ./src/index.html --public-url ./ && cp CNAME dist/ ",
-    "deploy": "gh-pages -b master -d dist -r git@github.com:anoncms/novcanik.kriptokuna.com.git"
+    "predeployhr": "rm -rf dist && parcel build ./src/index.html --public-url ./ && cp CNAMEhr dist/CNAME ",
+    "predeploy": "rm -rf dist && parcel build ./src/index.html --public-url ./ && cp CNAME dist/ && cp -R src/locales/ dist/ && static-i18n -l en -i hr -i en ./dist/ && mv i18n/index.html dist/",
+    "deployhr": "gh-pages -b master -d dist -r git@github.com:anoncms/novcanik.kriptokuna.com.git",
+    "deploy": "gh-pages -b main -d dist -r git@github.com:anoncms/wallet.anonutopia.com.git"
   },
   "keywords": [],
   "author": "",

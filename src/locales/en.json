@@ -1,19 +1,108 @@
 {
-    "lang": "en",
-    "html": {
-      "title": "Anote Wallet",
-      "description": "Kriptokuna je stabilna kriptovaluta koja ima vrijednost 1:1 s kunom što ju u stvarnosti čini decentraliziranim bankovnim računom pod kontrolom njenih korisnika.",
-      "url": "https://wallet.anonutopia.com",
-      "logoUrl": "./img/logo.png"
+  "lang": "en",
+  "html": {
+    "title": "Anote Wallet",
+    "description": "Kriptokuna je stabilna kriptovaluta koja ima vrijednost 1:1 s kunom što ju u stvarnosti čini decentraliziranim bankovnim računom pod kontrolom njenih korisnika.",
+    "url": "https://wallet.anonutopia.com",
+    "logoUrl": "./img/logo.png"
+  },
+  "login": {
+    "password": "Enter password"
+  },
+  "newAccount": {
+    "newTitle": "New Anote Account",
+    "register": "Register",
+    "importTitle": "Postojeći Kriptokuna račun",
+    "seed": "Seed riječi",
+    "import": "Import računa",
+    "new": "Novi"
+  },
+  "password": "Password",
+  "repeatPassword": "Repeat Password",
+  "main": {
+    "helpUrl": "https://t.me/Kriptokuna"
+  },
+  "home": {
+    "seedWarning": "Ne zaboravite spremiti seed riječi svog računa. Možete ih pronaći u postavkama nakon što upišete lozinku. <strong><u>Sami odgovarate za svoj račun.</u></strong>",
+    "tab1": "Kriptokuna",
+    "tab2": "Bankar",
+    "balance": "Stanje računa",
+    "earnings": "Akumulirana kamata",
+    "currency": "kn",
+    "collectEarnings": "Povuci kamatu",
+    "feeMessage": "Naknada za povlačenje iznosi 1 kn.",
+    "collectSuccess": "Povlačenje je uspješno izvršeno.",
+    "aintTitle": "AINT Tokeni",
+    "aintCurrency": "AINTa",
+    "aintEarnings": "Akumulirana AINT zarada",
+    "aintCollectEarnings": "Povuci"
+  },
+  "receive": {
+    "account": "Račun",
+    "message": "Račun je kopiran.",
+    "qr": "QR Kod"
+  },
+  "send": {
+    "feeMessage": "Cijena transakcije je 0.05 kn (5 lipa), neovisno o iznosu.",
+    "amount": "Iznos",
+    "amount2": "Iznos kuna",
+    "sendMessage": "Iznos je uspješno poslan.",
+    "sendButton": "Pošalji"
+  },
+  "exchange": {
+    "tab1": "U kriptokune",
+    "tab2": "U kune",
+    "amountWaves": "Iznos WAVESa",
+    "exchangeButton": "Zamijeni",
+    "exchangeAddress": "Adresa mjenjačnice"
+  },
+  "settings": {
+    "seedWords": "Seed riječi za backup",
+    "seedWordsCopied": "Seed riječi su kopirane.",
+    "show": "Prikaži",
+    "copy": "Kopiraj",
+    "newPassword": "Nova lozinka",
+    "repeatNewPassword": "Ponovi novu lozinku",
+    "changePassword": "Promijeni lozinku",
+    "logout": "Odlogiraj se"
+  },
+  "modals": {
+    "title1": "Unesi lozinku",
+    "cancel": "Odustani",
+    "continue": "Nastavi",
+    "title2": "Unesi staru lozinku"
+  },
+  "app": {
+    "error": "Dogodila se greška. Pokušajte ponovo.",
+    "exchange": {
+      "success": "Zamjena je uspješno napravljena.",
+      "sendSuccess": "Tokeni su uspješno poslani u mjenjačnicu.",
+      "needWaves": "Za ovu radnju potrebno je imati WAVES tokene.",
+      "addressRequired": "Adresa mjenjačnice je obavezna.",
+      "copySuccess": "Iznos je uspješno kopiran."
+    },
+    "collectAHRK": {
+      "notEnough": "Nemate dovoljno kuna za povlačenje kamate."
     },
     "login": {
-      "password": "Enter password"
+      "wrongPass": "Lozinka je pogrešna, pokušajte ponovo.",
+      "passRequired": "Lozinka je obavezna."
     },
-    "newAccount": {
-      "newTitle": "New Anote Account",
-      "register": "Register"
+    "qr": {
+      "message": "Skeniranje QR koda bit će dostupno u slijedećoj verziji."
     },
-    "password": "Password",
-    "repeatPassword": "Repeat Password"
+    "changePass": {
+      "success": "Lozinka je uspješno promijenjena.",
+      "oldRequired": "Stara lozinka je obavezna."
+    },
+    "send": {
+      "notEnough": "Nemate dovoljno novca na računu. Naknada iznosi 5 lipa.",
+      "bothRequired": "Oba polja su obavezna"
+    },
+    "import": {
+      "seedRequired": "Seed riječi su obavezne."
+    },
+    "bothPassRequired": "Oba polja lozinke su obavezna.",
+    "passwordsDontMatch": "Prva i druga lozinka se ne podudaraju."
   }
-  
+}
