@@ -26,7 +26,9 @@
     "home": {
       "seedWarning": "Ne zaboravite spremiti seed riječi svog računa. Možete ih pronaći u postavkama nakon što upišete lozinku. <strong><u>Sami odgovarate za svoj račun.</u></strong>",
       "tab1": "Kriptokuna",
-      "tab2": "Bankar",
+      "tab2": "Mining",
+      "tab3": "Waves",
+      "tab4": "Bankar",
       "balance": "Stanje računa",
       "earnings": "Akumulirana kamata",
       "currency": "kn",
@@ -49,7 +51,12 @@
       "amount2": "Iznos kuna",
       "address": "Addresa / broj računa",
       "sendMessage": "Iznos je uspješno poslan.",
-      "sendButton": "Pošalji"
+      "sendButton": "Pošalji",
+      "currency": "Valuta",
+      "firstCurrencyId": "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT",
+      "firstCurrencyName": "Kriptokuna",
+      "secondCurrencyId": "Az4MsPQZn9RJm8adcya5RuztQ49rMGUW99Ebj56triWr",
+      "secondCurrencyName": "AnonEuro"
     },
     "addressBook": {
       "message": "Adresar je u izradi i bit će dostupan u slijedećoj verziji."
@@ -95,6 +102,7 @@
       },
       "bothPassRequired": "Oba polja lozinke su obavezna.",
       "passwordsDontMatch": "Prva i druga lozinka se ne podudaraju."
-    }
+    },
+    "underConstruction": "Ova mogućnost je u izradi i bit će dostupna u slijedećoj verziji."
   }
   

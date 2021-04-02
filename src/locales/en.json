@@ -25,13 +25,15 @@
   },
   "home": {
     "seedWarning": "Save your seed words for backup purposes. You can find them in settings. <strong><u>You are responsible for your account.</u></strong>",
-    "tab1": "Anote",
-    "tab2": "Banker",
+    "tab1": "AnonEuro",
+    "tab2": "Mining",
+    "tab3": "Waves",
+    "tab4": "Banker",
     "balance": "Balance",
     "earnings": "Accumulated earnings",
-    "currency": "ANOTE",
+    "currency": "AEUR",
     "collectEarnings": "Withdraw",
-    "feeMessage": "Withdrawal fee is 1 ANOTE",
+    "feeMessage": "Withdrawal fee is 0.5 AEUR",
     "collectSuccess": "Withdrawal was successful.",
     "aintTitle": "AINT Tokens",
     "aintCurrency": "AINTs",
@@ -49,7 +51,12 @@
     "amount2": "Amount ANOTEs",
     "address": "Address",
     "sendMessage": "The amount was sent successfully.",
-    "sendButton": "Send"
+    "sendButton": "Send",
+    "currency": "Currency",
+    "firstCurrencyId": "Az4MsPQZn9RJm8adcya5RuztQ49rMGUW99Ebj56triWr",
+    "firstCurrencyName": "AnonEuro",
+    "secondCurrencyId": "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT",
+    "secondCurrencyName": "Kriptokuna"
   },
   "addressBook": {
     "message": "Address book is under the development and it will be available in the next version."
@@ -95,5 +102,6 @@
     },
     "bothPassRequired": "Both passwords are required.",
     "passwordsDontMatch": "Passwords don't match."
-  }
+  },
+  "underConstruction": "This feature is under construction and it will be available in the next version."
 }

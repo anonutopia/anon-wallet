@@ -244,17 +244,28 @@ class Wallet {
     }
 
     async send() {
+        var currency = $("#sendCurrency").val();
+        var decimalPlaces = this.getDecimalPlaces(String(currency));
+        var fee = this.getFee(String(currency));
+        var feeCurrency = currency;
+        if (currency == AINT) {
+            if (t.lang == "hr") {
+                feeCurrency = AHRK;
+            } else if (t.lang == "en") {
+                feeCurrency = AEUR;
+            }
+        }
         var recipient = $("#addressRec").val();
         var a = $("#amount").val();
         if (a && recipient) {
             try {
                 var amount: number = +a;
                 await this.signer.transfer({
-                    amount: Math.floor(amount * AHRKDEC),
+                    amount: Math.floor(amount * decimalPlaces),
                     recipient: recipient,
-                    assetId: AHRK,
-                    feeAssetId: AHRK,
-                    fee: 50000
+                    assetId: currency,
+                    feeAssetId: feeCurrency,
+                    fee: fee
                 }).broadcast();
                 $("#sendSuccess").fadeIn(function(){
                     setTimeout(function(){
@@ -448,14 +459,46 @@ class Wallet {
             return false;
         }
     }
+
+    private getDecimalPlaces(currency:string):number {
+        if (currency == "" || currency == AINT || currency == ANOTE) {
+            return SATINBTC;
+        } else if (currency == AHRK) {
+            return AHRKDEC;
+        } else if (currency == AEUR) {
+            return 100;
+        }
+        return SATINBTC;
+    }
+
+    private getFee(currency:string) {
+        if (currency == AHRK) {
+            return 50000;
+        } else if (currency == AEUR) {
+            return 1;
+        } else if (currency == "") {
+            return 100000;
+        } else if (currency == ANOTE) {
+            return 30000000;
+        } else if (currency == AINT) {
+            if (t.lang == "hr") {
+                return 50000;
+            } else if (t.lang == "en") {
+                return 1;
+            }
+        }
+    }
 }
 
 const AHRK = "Gvs59WEEXVAQiRZwisUosG7fVNr8vnzS8mjkgqotrERT";
+const AEUR = "Az4MsPQZn9RJm8adcya5RuztQ49rMGUW99Ebj56triWr";
+const AINT = "66DUhUoJaoZcstkKpcoN3FUcqjB6v8VJd5ZQd6RsPxhv";
+const ANOTE = "4zbprK67hsa732oSGLB6HzE8Yfdj3BcTcehCeTA1G5Lf";
+
 const AHRKDEC = 1000000;
 const SATINBTC = 100000000;
 const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
 const AINTADDRESS = "3PBmmxKhFcDhb8PrDdCdvw2iGMPnp7VuwPy"
-const AINT = "66DUhUoJaoZcstkKpcoN3FUcqjB6v8VJd5ZQd6RsPxhv";
 
 var activeScreen = "home";
 var interestScript = "https://n.kriptokuna.com";
@@ -526,17 +569,46 @@ $("#settings").on( "click", function() {
 $("#tabButton1").on( "click", function() {
     $("#tabButton1").addClass("active");
     $("#tabButton2").removeClass("active");
-    $("#tab2").fadeOut(function(){
-        $("#tab1").fadeIn();
-    });
+    $("#tabButton3").removeClass("active");
+    $("#tabButton4").removeClass("active");
+    $("#tab2").hide();
+    $("#tab3").hide();
+    $("#tab4").hide();
+    $("#tab1").fadeIn();
 });
 
 $("#tabButton2").on( "click", function() {
     $("#tabButton2").addClass("active");
     $("#tabButton1").removeClass("active");
-    $("#tab1").fadeOut(function(){
-        $("#tab2").fadeIn();
-    });
+    $("#tabButton3").removeClass("active");
+    $("#tabButton4").removeClass("active");
+    $("#tab1").hide();
+    $("#tab3").hide();
+    $("#tab4").hide();
+    $("#tab2").fadeIn();
+});
+
+$("#tabButton3").on( "click", function() {
+    $("#tabButton3").addClass("active");
+    $("#tabButton1").removeClass("active");
+    $("#tabButton2").removeClass("active");
+    $("#tabButton4").removeClass("active");
+    $("#tab1").hide();
+    $("#tab2").hide();
+    $("#tab4").hide();
+    $("#tab3").fadeIn();
+});
+
+$("#tabButton4").on( "click", function() {
+    $("#tabButton4").addClass("active");
+    $("#tabButton1").removeClass("active");
+    $("#tabButton2").removeClass("active");
+    $("#tabButton3").removeClass("active");
+    $("#tabButton1").removeClass("active");
+    $("#tab1").hide();
+    $("#tab2").hide();
+    $("#tab3").hide();
+    $("#tab4").fadeIn();
 });
 
 $("#backFromSettings").on( "click", function() {

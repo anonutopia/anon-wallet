@@ -165,8 +165,14 @@
                  <a class="nav-link active fw-bold" aria-current="page" href="javascript:void(0)" id="tabButton1" data-t>home.tab1</a>
                </li>
                <li class="nav-item">
-                 <a class="nav-link text-danger fw-bold" href="javascript:void(0)" id="tabButton2" data-t>home.tab2</a>
+                 <a class="nav-link fw-bold" href="javascript:void(0)" id="tabButton2" data-t>home.tab2</a>
                </li>
+               <li class="nav-item">
+                  <a class="nav-link fw-bold" href="javascript:void(0)" id="tabButton3" data-t>home.tab3</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-danger fw-bold" href="javascript:void(0)" id="tabButton4" data-t>home.tab4</a>
+                </li>
             </ul>
             <div id="tab1">
                <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
@@ -192,6 +198,22 @@
                </div>
             </div>
             <div id="tab2" style="display: none;">
+               <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
+                  <span data-t>underConstruction</span>
+               </div>
+               <div class="bg-light px-md-5 p-3 mt-5 border shadow-lg" style="color: #515151;">
+                  <span data-t>underConstruction</span>
+               </div>
+            </div>
+            <div id="tab3" style="display: none;">
+               <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
+                  <span data-t>underConstruction</span>
+               </div>
+               <div class="bg-light px-md-5 p-3 mt-5 border shadow-lg" style="color: #515151;">
+                  <span data-t>underConstruction</span>
+               </div>
+            </div>
+            <div id="tab4" style="display: none;">
                <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
                   <h3 class="p-2 text-center text-secondary border-bottom"><strong data-t>home.aintTitle</strong></h3>
                   <span class="display-1 px-2 fw-bold" id="balanceAint">0.00000000</span><span class="fs-3" data-t>home.aintCurrency</span>
@@ -271,6 +293,16 @@
                   <div class="col-12 col-lg-6">
                      <div class="alert alert-danger" role="alert" data-t>send.feeMessage</div>
                      <form action="javascript:void(0)">
+                        <div class="mb-4">
+                           <label class="form-label fw-bold" data-t>send.currency</label>
+                           <select class="form-select" name="sendCurrency" id="sendCurrency">
+                              <option data-attr-t data-attr-t-interpolate value-t="{{send.firstCurrencyId}}" selected data-t>send.firstCurrencyName</option>
+                              <option data-attr-t data-attr-t-interpolate value-t="{{send.secondCurrencyId}}" data-t>send.secondCurrencyName</option>
+                              <option value="66DUhUoJaoZcstkKpcoN3FUcqjB6v8VJd5ZQd6RsPxhv">AINT</option>
+                              <option value="4zbprK67hsa732oSGLB6HzE8Yfdj3BcTcehCeTA1G5Lf">ANOTE</option>
+                              <option value="">WAVES</option>
+                            </select>
+                        </div>
                         <div class="mb-3">
                            <label class="form-label fw-bold" data-t>receive.account</label>
                            <div class="input-group mb-3 input-group-sm">
