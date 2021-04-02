@@ -33,7 +33,7 @@
     "earnings": "Accumulated earnings",
     "currency": "AEUR",
     "collectEarnings": "Withdraw",
-    "feeMessage": "Withdrawal fee is 0.5 AEUR",
+    "feeMessage": "Withdrawal fee is 10 ANOTEs",
     "collectSuccess": "Withdrawal was successful.",
     "aintTitle": "AINT Tokens",
     "aintCurrency": "AINTs",
