@@ -223,8 +223,13 @@ class Wallet {
             decimalPlaces = 8;
             amount = this.balanceAnote;
         }
+        if (currency != AINT) {
+            amount -= this.getFee(String(currency));
+        }
         var balance = amount / dp;
-        console.log()
+        if (balance < 0) {
+            balance = 0;
+        }
         $("#amount").val(String(balance.toFixed(decimalPlaces)));
     }
 
@@ -538,6 +543,7 @@ class Wallet {
                 return 1;
             }
         }
+        return 100000;
     }
 }
 
