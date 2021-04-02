@@ -138,7 +138,7 @@ class Wallet {
         var fee = 0;
 
         if (t.lang == "en") {
-            amount = 9700000000;
+            amount = 970000000;
             assetId = ANOTE;
             fee = 30000000;
         } else if (t.lang == "hr") {
