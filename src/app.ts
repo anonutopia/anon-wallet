@@ -427,7 +427,7 @@ class Wallet {
             } else if (asset.assetId == AEUR) {
                 wallet.balanceAeur = asset.amount;
                 if (t.lang == "en") {
-                    var balance = Math.round(wallet.balanceAeur * 100) / 100;
+                    var balance = Math.round(wallet.balanceAeur) / 100;
                     $("#balance").html(String(balance.toFixed(2)));
                 }
             } else if (asset.assetId == "WAVES") {
