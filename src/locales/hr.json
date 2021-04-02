@@ -39,7 +39,9 @@
       "aintCurrency": "AINTa",
       "aintEarnings": "Akumulirana AINT zarada",
       "aintCollectEarnings": "Povuci",
-      "balanceWaves": "Stanje WAVESa"
+      "balanceWaves": "Stanje WAVESa",
+      "balanceAnotes": "Stanje Anota",
+      "mineMessage": "Anote se mogu jednostavno rudariti koristeći Telegram messenger. Više o rudarenju pročitajte <a href=\"https://www.anonutopia.com/beginner\" target=\"_blank\">ovdje</a>."
     },
     "receive": {
       "account": "Račun",

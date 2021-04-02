@@ -39,7 +39,9 @@
     "aintCurrency": "AINTs",
     "aintEarnings": "Accumulated AINT earnings",
     "aintCollectEarnings": "Withdraw",
-    "balanceWaves": "WAVES Balance"
+    "balanceWaves": "WAVES Balance",
+    "balanceAnotes": "ANOTE Balance",
+    "mineMessage": "Anotes can be mined in a simple way using Telegram messenger. You can read more about mining <a href=\"https://www.anonutopia.com/beginner\" target=\"_blank\">here</a>."
   },
   "receive": {
     "account": "Account Address",

@@ -350,6 +350,9 @@ class Wallet {
             } else if (asset.assetId == AINT) {
                 var balance = asset.amount / SATINBTC;
                 $("#balanceAint").html(String(balance.toFixed(4)));
+            } else if (asset.assetId == ANOTE) {
+                var balance = asset.amount / SATINBTC;
+                $("#balanceAnotes").html(String(balance.toFixed(8)));
             }
         });
     }
