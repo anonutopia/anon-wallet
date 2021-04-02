@@ -15,12 +15,23 @@ class Wallet {
     private signer;
     private provider;
     private seedSaved;
+    balanceWaves:number;
+    balanceAhrk:number;
+    balanceAeur:number;
+    balanceAnote:number;
+    balanceAint:number;
 
     constructor() { 
         this.address = Cookies.get("address");
         this.seed = Cookies.get("seed");
         this.sessionSeed = Cookies.get("sessionSeed");
         this.seedSaved = Cookies.get("seedSaved");
+
+        this.balanceWaves = 0;
+        this.balanceAhrk = 0;
+        this.balanceAeur = 0;
+        this.balanceAnote = 0;
+        this.balanceAint = 0;
     }
 
     getPage():string {
@@ -191,6 +202,32 @@ class Wallet {
         });
     }
 
+    updateAmount() {
+        var currency = $("#sendCurrency").val();
+        var amount = 0;
+        var dp = this.getDecimalPlaces(String(currency));
+        var decimalPlaces = 0;
+        if (currency == AHRK) {
+            amount = this.balanceAhrk;
+            decimalPlaces = 6;
+        } else if (currency == AEUR) {
+            amount = this.balanceAeur;
+            decimalPlaces = 2;
+        } else if (currency == "") {
+            amount = this.balanceWaves;
+            decimalPlaces = 8;
+        } else if (currency == AINT) {
+            decimalPlaces = 8;
+            amount = this.balanceAint;
+        } else if (currency == ANOTE) {
+            decimalPlaces = 8;
+            amount = this.balanceAnote;
+        }
+        var balance = amount / dp;
+        console.log()
+        $("#amount").val(String(balance.toFixed(decimalPlaces)));
+    }
+
     async changePassword() {
         var p = $("#password9").val();
         if (p) {
@@ -336,22 +373,30 @@ class Wallet {
     async populateBalance() {
         const balances = await this.signer.getBalance();
         balances.forEach(function (asset) {
-            if (asset.assetId == AHRK && t.lang == "hr") {
-                var balance = asset.amount / AHRKDEC;
-                balance = Math.round(balance * 100) / 100;
-                $("#balance").html(String(balance.toFixed(2)));
-            } else if (asset.assetId == AEUR && t.lang == "en") {
-                var balance = asset.amount / 100;
-                balance = Math.round(balance * 100) / 100;
-                $("#balance").html(String(balance.toFixed(2)));
+            if (asset.assetId == AHRK) {
+                wallet.balanceAhrk = asset.amount;
+                if (t.lang == "hr") {
+                    var balance = wallet.balanceAhrk / AHRKDEC;
+                    balance = Math.round(balance * 100) / 100;
+                    $("#balance").html(String(balance.toFixed(2)));
+                }
+            } else if (asset.assetId == AEUR) {
+                wallet.balanceAeur = asset.amount / 100;
+                if (t.lang == "en") {
+                    var balance = Math.round(wallet.balanceAeur * 100) / 100;
+                    $("#balance").html(String(balance.toFixed(2)));
+                }
             } else if (asset.assetId == "WAVES") {
-                var balance = asset.amount / SATINBTC;
+                wallet.balanceWaves = asset.amount;
+                var balance = wallet.balanceWaves / SATINBTC;
                 $("#balanceWaves").html(String(balance.toFixed(8)));
             } else if (asset.assetId == AINT) {
-                var balance = asset.amount / SATINBTC;
+                wallet.balanceAint = asset.amount;
+                var balance = wallet.balanceAint / SATINBTC;
                 $("#balanceAint").html(String(balance.toFixed(4)));
             } else if (asset.assetId == ANOTE) {
-                var balance = asset.amount / SATINBTC;
+                wallet.balanceAnote = asset.amount;
+                var balance = wallet.balanceAnote / SATINBTC;
                 $("#balanceAnotes").html(String(balance.toFixed(8)));
             }
         });
@@ -531,6 +576,7 @@ $("#backFromReceive").on( "click", function() {
 
 $("#send").on( "click", function() {
     activeScreen = "send";
+    wallet.updateAmount();
     $("#screen-home").fadeOut(function(){
         $("#screen-send").fadeIn();
     });
@@ -686,6 +732,10 @@ $("#buttonChangePass").on( "click", function() {
 
 $("#buttonCollect").on( "click", function() {
     wallet.collectInterest(AHRKADDRESS);
+});
+
+$("#sendCurrency").on( "change", function() {
+    wallet.updateAmount();
 });
 
 $("#buttonCollectEarnings").on( "click", function() {
