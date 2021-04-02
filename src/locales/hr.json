@@ -83,7 +83,7 @@
     "app": {
       "lang": "hr",
       "error": "Dogodila se greška. Pokušajte ponovo.",
-      "collectAHRK": {
+      "collectEarnings": {
         "notEnough": "Nemate dovoljno kuna za povlačenje kamate."
       },
       "login": {

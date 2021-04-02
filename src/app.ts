@@ -38,7 +38,7 @@ class Wallet {
         this.checkSeedWarning();
         if (this.isLoggedIn()) {
             this.populateData();
-            this.getInterestScript();
+            this.getEarningsScript();
             return "main";
         } else {
             if (this.accountExists()) {
@@ -59,14 +59,10 @@ class Wallet {
         }
     }
 
-    getInterestScript() {
+    getEarningsScript() {
         var newScript = document.createElement("script");
-        newScript.src = interestScript + "/" + this.getAddress() + "/interest.js";
+        newScript.src = earningsScript + "/" + this.getAddress() + "/earnings.js";
         document.body.appendChild(newScript);
-
-        var newScript1 = document.createElement("script");
-        newScript1.src = earningsScript + "/" + this.getAddress() + "/earnings.js";
-        document.body.appendChild(newScript1);
     }
 
     // async exchange(id, address) {
@@ -148,7 +144,7 @@ class Wallet {
             }
         } catch (error) {
             if (error.error == 112) {
-                $("#pMessage9").html(t.collectAHRK.notEnough);
+                $("#pMessage9").html(t.collectEarnings.notEnough);
             } else {
                 $("#pMessage9").html(t.error);
                 console.log(error);
@@ -170,7 +166,7 @@ class Wallet {
                     Cookies.set("sessionSeed", this.sessionSeed, { expires: d });
                     this.populateData();
                     this.showHomeAfterLogin();
-                    this.getInterestScript();
+                    this.getEarningsScript();
                 } catch (e) {
                     $("#pMessage3").html(t.login.wrongPass);
                     $("#pMessage3").fadeIn();
@@ -392,7 +388,7 @@ class Wallet {
             this.setCookies();
             this.populateData();
             this.showHomeAfterRegister();
-            this.getInterestScript();
+            this.getEarningsScript();
         }
     }
 
@@ -406,7 +402,7 @@ class Wallet {
                 this.setCookies();
                 this.populateData();
                 this.showHomeAfterRegister();
-                this.getInterestScript();
+                this.getEarningsScript();
             } else {
                 $("#pMessage2").html(t.import.seedRequired);
                 $("#pMessage2").fadeIn();
@@ -597,7 +593,6 @@ const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
 const AINTADDRESS = "3PBmmxKhFcDhb8PrDdCdvw2iGMPnp7VuwPy"
 
 var activeScreen = "home";
-var interestScript = "https://n.kriptokuna.com";
 var earningsScript = "https://aint.anonutopia.com";
 var t;
 

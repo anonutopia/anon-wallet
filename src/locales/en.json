@@ -83,7 +83,7 @@
   "app": {
     "lang": "en",
     "error": "An error happened. Please try again.",
-    "collectAHRK": {
+    "collectEarnings": {
       "notEnough": "You don't have enough to withdraw."
     },
     "login": {
