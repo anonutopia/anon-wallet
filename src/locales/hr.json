@@ -38,7 +38,8 @@
       "aintTitle": "AINT Tokeni",
       "aintCurrency": "AINTa",
       "aintEarnings": "Akumulirana AINT zarada",
-      "aintCollectEarnings": "Povuci"
+      "aintCollectEarnings": "Povuci",
+      "balanceWaves": "Stanje WAVESa"
     },
     "receive": {
       "account": "Račun",

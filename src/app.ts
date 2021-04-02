@@ -346,8 +346,7 @@ class Wallet {
                 $("#balance").html(String(balance.toFixed(2)));
             } else if (asset.assetId == "WAVES") {
                 var balance = asset.amount / SATINBTC;
-                // $("#balanceWaves1").val(String(balance.toFixed(8)));
-                // $("#balanceWaves2").val(String(balance.toFixed(8)));
+                $("#balanceWaves").html(String(balance.toFixed(8)));
             } else if (asset.assetId == AINT) {
                 var balance = asset.amount / SATINBTC;
                 $("#balanceAint").html(String(balance.toFixed(4)));

@@ -38,7 +38,8 @@
     "aintTitle": "AINT Tokens",
     "aintCurrency": "AINTs",
     "aintEarnings": "Accumulated AINT earnings",
-    "aintCollectEarnings": "Withdraw"
+    "aintCollectEarnings": "Withdraw",
+    "balanceWaves": "WAVES Balance"
   },
   "receive": {
     "account": "Account Address",
