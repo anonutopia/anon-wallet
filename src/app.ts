@@ -336,8 +336,12 @@ class Wallet {
     async populateBalance() {
         const balances = await this.signer.getBalance();
         balances.forEach(function (asset) {
-            if (asset.assetId == AHRK) {
+            if (asset.assetId == AHRK && t.lang == "hr") {
                 var balance = asset.amount / AHRKDEC;
+                balance = Math.round(balance * 100) / 100;
+                $("#balance").html(String(balance.toFixed(2)));
+            } else if (asset.assetId == AEUR && t.lang == "en") {
+                var balance = asset.amount / 100;
                 balance = Math.round(balance * 100) / 100;
                 $("#balance").html(String(balance.toFixed(2)));
             } else if (asset.assetId == "WAVES") {
@@ -506,7 +510,6 @@ var earningsScript = "https://aint.anonutopia.com";
 var t;
 
 const wallet = new Wallet();
-const page = wallet.getPage();
 
 // Button bindings
 
@@ -723,14 +726,15 @@ function createTranslation() {
     var lang = $("#lang").val();
     $.getJSON("locales/" + lang + ".json", function( data ) {
         t = data.app;
+        const page = wallet.getPage();
+        $("#page-loading").fadeOut(function(){
+            $("#page-" + page).fadeIn();
+        });
     });
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
     createTranslation();
-    $("#page-loading").fadeOut(function(){
-        $("#page-" + page).fadeIn();
-    });
 })
 
 // Helper functions

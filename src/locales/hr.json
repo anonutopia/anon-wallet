@@ -78,6 +78,7 @@
       "title2": "Unesi staru lozinku"
     },
     "app": {
+      "lang": "hr",
       "error": "Dogodila se greška. Pokušajte ponovo.",
       "collectAHRK": {
         "notEnough": "Nemate dovoljno kuna za povlačenje kamate."
