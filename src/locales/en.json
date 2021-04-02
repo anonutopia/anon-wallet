@@ -49,7 +49,7 @@
     "qr": "QR Code"
   },
   "send": {
-    "feeMessage": "Transaction fee is 0.3 ANOTEs no matter the amount.",
+    "feeMessage": "Transaction fee is <span id=\"feePrice\">0.01</span> <span id=\"feeAsset\">AEUR</span> no matter the amount.",
     "amount": "Amount",
     "amount2": "Amount ANOTEs",
     "address": "Address",

@@ -49,7 +49,7 @@
       "qr": "QR Kod"
     },
     "send": {
-      "feeMessage": "Cijena transakcije je 0.05 kn (5 lipa), neovisno o iznosu.",
+      "feeMessage": "Cijena transakcije je <span id=\"feePrice\">0.050000</span> <span id=\"feeAsset\">AHRK</span>, neovisno o iznosu.",
       "amount": "Iznos",
       "amount2": "Iznos kuna",
       "address": "Addresa / broj računa",
