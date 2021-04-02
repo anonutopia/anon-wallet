@@ -71,8 +71,6 @@ class Wallet {
     getEarningsScript() {
         var newScript = document.createElement("script");
         newScript.onload = function() {
-            console.log($("#earningsWaves").val());
-
             wallet.earningsWaves = parseInt(String($("#earningsWaves").val()));
             wallet.earningsAhrk = parseInt(String($("#earningsAhrk").val()));
             wallet.earningsAeur = parseInt(String($("#earningsAeur").val()));
@@ -135,33 +133,47 @@ class Wallet {
     // }
 
     async collectEarnings(address:string) {
+        var amount = 0;
+        var assetId = "";
+        var fee = 0;
+
+        if (t.lang == "en") {
+            amount = 9700000000;
+            assetId = ANOTE;
+            fee = 30000000;
+        } else if (t.lang == "hr") {
+            amount = 950000;
+            assetId = AHRK;
+            fee = 50000;
+        }
+
         try {
             await this.signer.transfer({
-                amount: 950000,
+                amount: amount,
                 recipient: address,
-                assetId: AHRK,
-                feeAssetId: AHRK,
-                fee: 50000,
+                assetId: assetId,
+                feeAssetId: assetId,
+                fee: fee,
                 attachment: libs.crypto.base58Encode(libs.crypto.stringToBytes('collect'))
             }).broadcast();
-            if (address == AHRKADDRESS) {
-                $("#pMessage9").fadeOut(function() {
-                    $("#pMessage10").fadeIn(function(){
-                        setTimeout(function(){
-                            $("#pMessage10").fadeOut(function() {
-                                $("#pMessage9").fadeIn();
-                                $("#accumulatedEarningsMain").html("0.000000")
-                            });
-                        }, 2000);
-                    });
-                });
-            } else {
+            if (address == AINTADDRESS) {
                 $("#pMessage11").fadeOut(function() {
                     $("#pMessage12").fadeIn(function(){
                         setTimeout(function(){
                             $("#pMessage12").fadeOut(function() {
                                 $("#pMessage11").fadeIn();
                                 $("#accumulatedEarningsAint").html("0.0000")
+                            });
+                        }, 2000);
+                    });
+                });
+            } else {
+                $("#pMessage9").fadeOut(function() {
+                    $("#pMessage10").fadeIn(function(){
+                        setTimeout(function(){
+                            $("#pMessage10").fadeOut(function() {
+                                $("#pMessage9").fadeIn();
+                                $("#accumulatedEarningsMain").html("0.000000")
                             });
                         }, 2000);
                     });
