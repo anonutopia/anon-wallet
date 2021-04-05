@@ -72,7 +72,10 @@
       "newPassword": "Nova lozinka",
       "repeatNewPassword": "Ponovi novu lozinku",
       "changePassword": "Promijeni lozinku",
-      "logout": "Odlogiraj se"
+      "logout": "Odlogiraj se",
+      "passwordChange": "Promjena lozinke",
+      "connectTelegram": "Spajanje Telegrama",
+      "logutTitle": "Odlogiravanje"
     },
     "modals": {
       "title1": "Unesi lozinku",
@@ -109,4 +112,3 @@
     },
     "underConstruction": "Ova mogućnost je u izradi i bit će dostupna u slijedećoj verziji."
   }
-  

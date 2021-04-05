@@ -72,7 +72,10 @@
     "newPassword": "New Password",
     "repeatNewPassword": "Repeat New Password",
     "changePassword": "Change Password",
-    "logout": "Sign Out"
+    "logout": "Sign Out",
+    "passwordChange": "Change Password",
+    "connectTelegram": "Connect Telegrama",
+    "logutTitle": "Logging Out"
   },
   "modals": {
     "title1": "Enter Password",
