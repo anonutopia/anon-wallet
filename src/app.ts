@@ -88,50 +88,6 @@ class Wallet {
         document.body.appendChild(newScript);
     }
 
-    // async exchange(id, address) {
-    //     var a = $("#balanceWaves" + id).val();
-    //     if (a) {
-    //         var amount: number = +a;
-    //         if (amount > 0) {
-    //             try {
-    //                 amount = amount - 0.001
-    //                 await this.signer.transfer({
-    //                     amount: Math.floor(amount * SATINBTC),
-    //                     recipient: address,
-    //                     fee: 100000,
-    //                     attachment: libs.crypto.base58Encode(libs.crypto.stringToBytes('exchange'))
-    //                 }).broadcast();
-    //                 if (id == "1") {
-    //                     $("#exchangeSuccess" + id).html(t.exchange.success);
-    //                 } else {
-    //                     $("#exchangeSuccess" + id).html(t.exchange.sendSuccess);
-    //                 }
-    //                 $("#exchangeSuccess" + id).fadeIn(function(){
-    //                     setTimeout(function(){
-    //                         $("#exchangeAddress").val("");
-    //                         $("#exchangeSuccess" + id).fadeOut();
-    //                     }, 2000);
-    //                 });
-    //             } catch (e) {
-    //                 $("#exchangeError" + id).html(t.error);
-    //                 $("#exchangeError" + id).fadeIn(function(){
-    //                     setTimeout(function(){
-    //                         $("#exchangeError" + id).fadeOut();
-    //                     }, 2000);
-    //                 });
-    //                 console.log(e.message)
-    //             }
-    //         } else {
-    //             $("#exchangeError" + id).html(t.exchange.needWaves);
-    //             $("#exchangeError" + id).fadeIn(function(){
-    //                 setTimeout(function(){
-    //                     $("#exchangeError" + id).fadeOut();
-    //                 }, 2000);
-    //             });
-    //         }
-    //     }
-    // }
-
     async collectEarnings(address:string) {
         var amount = 0;
         var assetId = "";
