@@ -384,12 +384,13 @@
                <div class="row">
                   <div class="col-0 col-lg-3"></div>
                   <div class="col-12 col-lg-6">
+                     <h5 class="border-bottom border-lite mb-3">Backup</h5>
                      <form action="javascript:void(0)">
                         <div class="mb-3">
-                          <label class="form-label fw-bold" data-t>settings.seedWords</label>
-                          <textarea class="form-control" rows="3" readonly id="seedWords2"></textarea>
-                          <div id="pMessage5" class="form-text text-success mt-3 mb-2" style="display: none;" data-t>settings.seedWordsCopied</div>
-                          <div id="pMessage8" class="form-text text-danger mt-3 mb-2" style="display: none;"></div>
+                           <label class="form-label fw-bold" data-t>settings.seedWords</label>
+                           <textarea class="form-control" rows="3" readonly id="seedWords2"></textarea>
+                           <div id="pMessage5" class="form-text text-success mt-3 mb-2" style="display: none;" data-t>settings.seedWordsCopied</div>
+                           <div id="pMessage8" class="form-text text-danger mt-3 mb-2" style="display: none;"></div>
                         </div>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#passwordModal">
                            <i class="bi bi-lightbulb-fill"></i>&nbsp;&nbsp;<span data-t>settings.show</span>
@@ -404,6 +405,7 @@
                <div class="row mt-5">
                   <div class="col-0 col-lg-3"></div>
                   <div class="col-12 col-lg-6">
+                     <h5 class="border-bottom border-lite mb-3">Promjena lozinke</h5>
                      <form action="javascript:void(0)">
                         <div class="mb-3">
                            <label class="form-label fw-bold" data-t>settings.newPassword</label>
@@ -425,7 +427,23 @@
                <div class="row mt-5">
                   <div class="col-0 col-lg-3"></div>
                   <div class="col-12 col-lg-6">
-                     <button class="btn btn-danger btn-lg w-100" id="buttonLogout">
+                     <h5 class="border-bottom border-lite mb-3">Spajanje Telegrama</h5>
+                     <div class="row">
+                        <div class="col">
+                           <a href="" class="btn btn-primary w-100"><i class="bi bi-telegram"></i>&nbsp;&nbsp;AnoteRobot</a>
+                        </div>
+                        <div class="col">
+                           <a href="" class="btn btn-primary w-100"><i class="bi bi-telegram"></i>&nbsp;&nbsp;FunderBot</a>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-0 col-lg-3"></div>
+               </div>
+               <div class="row mt-5">
+                  <div class="col-0 col-lg-3"></div>
+                  <div class="col-12 col-lg-6">
+                     <h5 class="border-bottom border-lite">Odlogiravanje</h5>
+                     <button class="btn btn-danger btn-lg w-100 mt-3" id="buttonLogout">
                         <i class="bi bi-power"></i>&nbsp;&nbsp;<span data-t>settings.logout</span>
                      </button>
                   </div>
