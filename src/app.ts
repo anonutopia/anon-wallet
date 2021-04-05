@@ -584,7 +584,6 @@ const AINTADDRESS = "3PBmmxKhFcDhb8PrDdCdvw2iGMPnp7VuwPy"
 
 var activeScreen = "home";
 var earningsScript = "https://aint.anonutopia.com";
-// var earningsScript = "https://ca0d82c86a33.ngrok.io";
 var t;
 
 const wallet = new Wallet();
