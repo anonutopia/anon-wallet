@@ -583,7 +583,7 @@ const AHRKADDRESS = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
 const AINTADDRESS = "3PBmmxKhFcDhb8PrDdCdvw2iGMPnp7VuwPy"
 
 var activeScreen = "home";
-var earningsScript = "https://aint.anonutopia.com";
+var earningsScript = "https://aint.kriptokuna.com";
 var t;
 
 const wallet = new Wallet();
