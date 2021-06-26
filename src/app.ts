@@ -84,7 +84,8 @@ class Wallet {
             }
         }
         newScript.async = false;
-        newScript.src = earningsScript + "/" + this.getAddress() + "/earnings.js";
+        var stamp = new Date().getTime();
+        newScript.src = earningsScript + "/" + this.getAddress() + "/earnings.js?stamp=" + stamp;
         document.body.appendChild(newScript);
     }
 
@@ -783,12 +784,12 @@ $("#buttonCopy").on( "click", function() {
     });
 });
 
-$("#buttonCopy").on( "click", function() {
-    var address = $("#address").val();
-    copy(String(address));
-    $("#pMessage4").fadeIn(function(){
+$("#buttonCopyReferral").on( "click", function() {
+    var link = $("#referralLink").val();
+    copy(String(link));
+    $("#pMessage13").fadeIn(function(){
         setTimeout(function(){
-            $("#pMessage4").fadeOut();
+            $("#pMessage13").fadeOut();
         }, 500);
     });
 });

@@ -75,7 +75,10 @@
       "logout": "Odlogiraj se",
       "passwordChange": "Promjena lozinke",
       "connectTelegram": "Spajanje Telegrama",
-      "logoutTitle": "Odlogiravanje"
+      "logoutTitle": "Odlogiravanje",
+      "referralTitle": "Pozovi druge",
+      "referralLink": "Link za pozivanje",
+      "rCopyMessage": "Link je kopiran."
     },
     "modals": {
       "title1": "Unesi lozinku",

@@ -75,7 +75,10 @@
     "logout": "Sign Out",
     "passwordChange": "Change Password",
     "connectTelegram": "Connect Telegram",
-    "logoutTitle": "Logging Out"
+    "logoutTitle": "Logging Out",
+    "referralTitle": "Referral Program",
+    "referralLink": "Invitation link",
+    "rCopyMessage": "Link is copied."
   },
   "modals": {
     "title1": "Enter Password",
