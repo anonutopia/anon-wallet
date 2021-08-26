@@ -75,7 +75,7 @@ class Wallet {
             wallet.earningsAhrk = parseInt(String($("#earningsAhrk").val()));
             wallet.earningsAeur = parseInt(String($("#earningsAeur").val()));
     
-            $("#accumulatedEarningsAint").html(String((wallet.earningsWaves / SATINBTC).toFixed(8)));
+            $("#accumulatedEarningsAint").html(String((wallet.earningsWaves / AHRKDEC).toFixed(6)));
 
             if (t.lang == "en") {
                 $("#accumulatedEarningsMain").html(String((wallet.earningsAeur / 100).toFixed(2)));
