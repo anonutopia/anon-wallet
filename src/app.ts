@@ -311,6 +311,29 @@ class Wallet {
         }
     }
 
+    async deleteAccount() {
+        var p = $("#password10").val();
+        var pv = await this.passwordValid(p);
+        if (pv) {
+            this.sessionSeed = null;
+            this.seed = null;
+            this.address = null;
+            Cookies.remove("sessionSeed");
+            Cookies.remove("seed");
+            Cookies.remove("address");
+            $("#page-main").fadeOut(function(){
+                $("#page-newaccount").fadeIn();
+            });
+        } else {
+            $("#pMessage14").html(t.login.wrongPass);
+            $("#pMessage14").fadeIn(function(){
+                setTimeout(function(){
+                    $("#pMessage14").fadeOut();
+                }, 500);
+            });
+        }
+    }
+
     async send() {
         var currency = $("#sendCurrency").val();
         var decimalPlaces = this.getDecimalPlaces(String(currency));
@@ -749,6 +772,10 @@ $("#loginForm").on( "submit", function() {
 
 $("#buttonLogout").on( "click", function() {
     wallet.logout();
+});
+
+$("#buttonDeleteAccount").on( "click", function() {
+    wallet.deleteAccount();
 });
 
 $("#buttonSend").on( "click", function() {

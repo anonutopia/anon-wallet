@@ -73,6 +73,7 @@
     "repeatNewPassword": "Repeat New Password",
     "changePassword": "Change Password",
     "logout": "Sign Out",
+    "deleteAccount": "Delete Account",
     "passwordChange": "Change Password",
     "connectTelegram": "Connect Telegram",
     "logoutTitle": "Logging Out",
