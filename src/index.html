@@ -529,6 +529,29 @@
          </div>
       </div>
 
+      <!-- Modal Delete Account -->
+      <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="passwordModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h5 class="modal-title" id="passwordModalLabel" data-t>modals.title2</h5>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" data-attr-t data-attr-t-interpolate aria-label-t="{{modals.cancel}}"></button>
+            </div>
+            <div class="modal-body pt-1">
+               <input type="password" class="form-control" id="password9">
+            </div>
+            <div class="modal-footer justify-content-between">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                  <i class="bi bi-x-circle-fill"></i>&nbsp;&nbsp;<span data-t>modals.cancel</span>
+               </button>
+               <button type="button" class="btn btn-danger" id="buttonChangePass" data-bs-dismiss="modal">
+                  <i class="bi bi-arrow-right-circle-fill"></i>&nbsp;&nbsp;<span data-t>modals.continue</span>
+               </button>
+            </div>
+         </div>
+         </div>
+      </div>
+
    </div>
 
    <input type="hidden" id="lang" data-attr-t data-attr-t-interpolate value-t="{{lang}}">
