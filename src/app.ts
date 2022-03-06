@@ -463,6 +463,8 @@ class Wallet {
 
     private async populateData() {
         $("#address").val(this.address);
+        var historyHref = "https://wavesexplorer.com/address/" + this.address + "/tx";
+        $("#history").attr("href", historyHref);
         this.generateQR();
 
         if (!this.signer) {
