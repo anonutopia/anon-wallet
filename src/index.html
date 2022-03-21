@@ -240,8 +240,41 @@
             </div>
             <div id="tab5" style="display: none;">
                <div class="bg-light p-md-5 p-3 border shadow-lg" style="color: #515151;">
-                  <h3 class="p-2 text-center text-secondary border-bottom"><strong data-t>home.tab5</strong></h3>
-                  <p>U izradi.</p>
+                  <div class="row">
+                     <div class="col-0 col-lg-3"></div>
+                     <div class="col-12 col-lg-6">
+                        <div class="alert alert-danger" role="alert" data-t>exchange.feeMessageExchange</div>
+                        <form action="javascript:void(0)">
+                           <div class="mb-4">
+                              <label class="form-label fw-bold" data-t>exchange.from</label>
+                              <select class="form-select form-control-lg" name="fromCurrency" id="fromCurrency">
+                                 <option data-attr-t data-attr-t-interpolate value-t="{{send.firstCurrencyId}}" data-t>send.firstCurrencyName</option>
+                                 <option value="" selected>WAVES</option>
+                              </select>
+                           </div>
+                           <div class="mb-3">
+                              <label class="form-label fw-bold" data-t>exchange.to</label>
+                              <select class="form-select form-control-lg" name="toCurrency" id="toCurrency">
+                                 <option data-attr-t data-attr-t-interpolate value-t="{{send.firstCurrencyId}}" selected data-t>send.firstCurrencyName</option>
+                                 <option value="66DUhUoJaoZcstkKpcoN3FUcqjB6v8VJd5ZQd6RsPxhv">AINT</option>
+                                 <option value="">WAVES</option>
+                              </select>
+                           </div>
+                           <div class="mb-4">
+                              <label class="form-label fw-bold" data-t>send.amount</label>
+                              <input type="text" class="form-control" data-attr-t data-attr-t-interpolate placeholder-t="{{send.amount2}}" aria-label-t="{{send.amount2}}" id="amountExchange">
+                           </div>
+                           <div id="exchangeError" class="form-text text-danger" style="display: none;"></div>
+                           <div id="exchangeSuccess" class="form-text text-success mt-3 mb-2" style="display: none;" data-t>exchange.exchangeMessage</div>
+                           <div class="d-grid mt-4">
+                              <button class="btn btn-danger btn-block btn-lg" id="buttonExchange">
+                                 <i class="bi bi-arrow-repeat"></i>&nbsp;&nbsp;<span data-t>exchange.exchange</span>
+                              </button>
+                           </div>
+                        </form>
+                     </div>
+                     <div class="col-0 col-lg-3"></div>
+                  </div>   
                </div>
             </div>
          </div>

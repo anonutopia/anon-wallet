@@ -259,6 +259,73 @@ class Wallet {
         $("#feePrice").html(String(feeStr.toFixed(decimalPlaces)));
     }
 
+    updateAmountExchange() {
+        var currency = $("#fromCurrency").val();
+
+        var amount = 0;
+        var dp = this.getDecimalPlaces(String(currency));
+        var decimalPlaces = 0;
+        if (currency == AHRK) {
+            amount = this.balanceAhrk;
+            decimalPlaces = 6;
+        } else if (currency == AEUR) {
+            amount = this.balanceAeur;
+            decimalPlaces = 2;
+        } else if (currency == "") {
+            amount = this.balanceWaves;
+            decimalPlaces = 8;
+        } else if (currency == AINT) {
+            decimalPlaces = 8;
+            amount = this.balanceAint;
+        } else if (currency == ANOTE) {
+            decimalPlaces = 8;
+            amount = this.balanceAnote;
+        }
+        if (currency != AINT) {
+            amount -= this.getFee(String(currency));
+        }
+        var balance = amount / dp;
+        if (balance < 0) {
+            balance = 0;
+        }
+
+        $("#amountExchange").val(String(balance.toFixed(decimalPlaces)));
+    }
+
+    updateFeeAmountExchange() {
+        var currency = $("#fromCurrency").val();
+        var dp = this.getDecimalPlaces(String(currency));
+        var decimalPlaces = 0;
+        if (currency == AHRK) {
+            $("#feeAssetExchange").html("AHRK");
+            decimalPlaces = 6;
+        } else if (currency == AEUR) {
+            $("#feeAssetExchange").html("AEUR");
+            decimalPlaces = 2;
+        } else if (currency == "") {
+            $("#feeAssetExchange").html("WAVES");
+            decimalPlaces = 8;
+        } else if (currency == AINT) {
+            if (t.lang == "hr") {
+                $("#feeAssetExchange").html("AHRK");
+                decimalPlaces = 6;
+                dp = this.getDecimalPlaces(AHRK);
+            } else if (t.lang == "en") {
+                $("#feeAssetExchange").html("AEUR");
+                decimalPlaces = 2;
+                dp = this.getDecimalPlaces(AEUR);
+            }
+        } else if (currency == ANOTE) {
+            $("#feeAssetExchange").html("ANOTE");
+            decimalPlaces = 8;
+        }
+
+        var fee = this.getFee(String(currency));
+        var feeStr = fee / dp;
+
+        $("#feePriceExchange").html(String(feeStr.toFixed(decimalPlaces)));
+    }
+
     async changePassword() {
         var p = $("#password9").val();
         if (p) {
@@ -390,6 +457,74 @@ class Wallet {
                     $("#sendError").fadeOut();
                 }, 2000);
             });
+        }
+    }
+
+    async exchange() {
+        var from = $("#fromCurrency").val();
+        var to = $("#toCurrency").val();
+        var decimalPlaces = this.getDecimalPlaces(String(from));
+        var fee = this.getFee(String(from));
+        var feeCurrency = from;
+
+        if (from == to) {
+            $("#exchangeError").html(t.exchange.currenciesSame);
+            $("#exchangeError").fadeIn(function(){
+                setTimeout(function(){
+                    $("#exchangeError").fadeOut();
+                }, 2000);
+            });
+        } else {
+            if (to == AINT) {
+                var recipient = "3PBmmxKhFcDhb8PrDdCdvw2iGMPnp7VuwPy";
+            } else {
+                var recipient = "3PPc3AP75DzoL8neS4e53tZ7ybUAVxk2jAb";
+            }
+
+            var a = $("#amountExchange").val();
+            if (a) {
+                try {
+                    var amount: number = +a;
+                    await this.signer.transfer({
+                        amount: Math.floor(amount * decimalPlaces),
+                        recipient: recipient,
+                        assetId: from,
+                        feeAssetId: feeCurrency,
+                        fee: fee
+                    }).broadcast();
+                    $("#exchangeSuccess").fadeIn(function(){
+                        setTimeout(function(){
+                            $("#exchangeSuccess").fadeOut();
+                            $("#amount").val("");
+                            $("#addressRec").val("");
+                        }, 2000);
+                    });
+                } catch (e) {
+                    if (e.error == 112) {
+                        $("#exchangeError").html(t.send.notEnough);
+                        $("#exchangeError").fadeIn(function(){
+                            setTimeout(function(){
+                                $("#exchangeError").fadeOut();
+                            }, 2000);
+                        });
+                    } else {
+                        $("#exchangeError").html(t.error);
+                        $("#exchangeError").fadeIn(function(){
+                            setTimeout(function(){
+                                $("#exchangeError").fadeOut();
+                            }, 2000);
+                        });
+                        console.log(e.message)
+                    }
+                }
+            } else {
+                $("#exchangeError").html(t.exchange.amountRequired);
+                $("#exchangeError").fadeIn(function(){
+                    setTimeout(function(){
+                        $("#exchangeError").fadeOut();
+                    }, 2000);
+                });
+            }
         }
     }
 
@@ -802,6 +937,10 @@ $("#buttonSend").on( "click", function() {
     wallet.send();
 });
 
+$("#buttonExchange").on( "click", function() {
+    wallet.exchange();
+});
+
 $("#buttonShowSeed").on( "click", function() {
     wallet.showSeed();
 });
@@ -817,6 +956,11 @@ $("#buttonCollect").on( "click", function() {
 $("#sendCurrency").on( "change", function() {
     wallet.updateAmount();
     wallet.updateFeeAmount();
+});
+
+$("#fromCurrency").on( "change", function() {
+    wallet.updateAmountExchange();
+    wallet.updateFeeAmountExchange();
 });
 
 $("#buttonCollectEarnings").on( "click", function() {

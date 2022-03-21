@@ -62,6 +62,13 @@
       "secondCurrencyId": "Az4MsPQZn9RJm8adcya5RuztQ49rMGUW99Ebj56triWr",
       "secondCurrencyName": "AnonEuro"
     },
+    "exchange": {
+      "from": "Iz valute",
+      "to": "U valutu",
+      "exchange": "Zamijeni",
+      "feeMessageExchange": "Cijena transakcije je <span id=\"feePriceExchange\">0.050000</span> <span id=\"feeAssetExchange\">AHRK</span>, neovisno o iznosu.",
+      "exchangeMessage": "Zamjena je uspješno obavljena. Iznos će se uskoro pokazati na vašem računu."
+    },
     "addressBook": {
       "message": "Adresar je u izradi i bit će dostupan u slijedećoj verziji."
     },
@@ -106,8 +113,12 @@
         "oldRequired": "Stara lozinka je obavezna."
       },
       "send": {
-        "notEnough": "Nemate dovoljno novca na računu. Naknada iznosi 5 lipa.",
+        "notEnough": "Nemate dovoljno novca na računu. Naknada iznosi 5 lipa ili 0.001 WAVES.",
         "bothRequired": "Oba polja su obavezna"
+      },
+      "exchange": {
+        "currenciesSame": "Valute ne mogu biti iste.",
+        "amountRequired": "Iznos je obavezan."
       },
       "import": {
         "seedRequired": "Seed riječi su obavezne."
