@@ -11,7 +11,7 @@
     "predeployhr": "rm -rf dist && cp -R src dist && static-i18n -l hr -i hr -o ./dist ./src/ && parcel build ./dist/index.html --public-url ./ && cp CNAMEhr dist/CNAME && cp -R src/locales/ dist/ && rm -rf ./dist/img/",
     "predeploy": "rm -rf dist && cp -R src dist && static-i18n -l en -i en -o ./dist ./src/ && parcel build ./dist/index.html --public-url ./ && cp CNAME dist/ && cp -R src/locales/ dist/ && rm -rf ./dist/img/",
     "deployhr": "gh-pages -b master -d dist -r git@github.com:anoncms/novcanik.kriptokuna.com.git",
-    "deploy": "gh-pages -b main -d dist -r git@github.com:anoncms/wallet.anonutopia.com.git"
+    "deploy": "gh-pages -b main -d dist -r git@github.com:anoncms/wallet.anoneuro.com.git"
   },
   "keywords": [],
   "author": "",
