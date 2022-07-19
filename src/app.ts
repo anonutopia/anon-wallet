@@ -413,17 +413,24 @@ class Wallet {
                 feeCurrency = AEUR;
             }
         }
-        var recipient = $("#addressRec").val();
+        var recipient = $("#addressRec").val()?.toString();
         var a = $("#amount").val();
         if (a && recipient) {
             try {
+                var attachment = "";
+                if (recipient.startsWith('3A')) {
+                    attachment = libs.crypto.base58Encode(libs.crypto.stringToBytes(recipient));
+                    recipient = "3PHGRfLy5E4fRcpKbSipvZZN9FKSNCaNCh6";
+                }
+
                 var amount: number = +a;
                 await this.signer.transfer({
                     amount: Math.floor(amount * decimalPlaces),
                     recipient: recipient,
                     assetId: currency,
                     feeAssetId: feeCurrency,
-                    fee: fee
+                    fee: fee,
+                    attachment: attachment
                 }).broadcast();
                 $("#sendSuccess").fadeIn(function(){
                     setTimeout(function(){
@@ -560,35 +567,40 @@ class Wallet {
     }
 
     async populateBalance() {
-        const balances = await this.signer.getBalance();
-        balances.forEach(function (asset) {
-            if (asset.assetId == AHRK) {
-                wallet.balanceAhrk = asset.amount;
-                if (t.lang == "hr") {
-                    var balance = wallet.balanceAhrk / AHRKDEC;
-                    balance = Math.round(balance * 100) / 100;
-                    $("#balance").html(String(balance.toFixed(2)));
+        try {
+            const balances = await this.signer.getBalance();
+
+            balances.forEach(function (asset) {
+                if (asset.assetId == AHRK) {
+                    wallet.balanceAhrk = asset.amount;
+                    if (t.lang == "hr") {
+                        var balance = wallet.balanceAhrk / AHRKDEC;
+                        balance = Math.round(balance * 100) / 100;
+                        $("#balance").html(String(balance.toFixed(2)));
+                    }
+                } else if (asset.assetId == AEUR) {
+                    wallet.balanceAeur = asset.amount;
+                    if (t.lang == "en") {
+                        var balance = Math.round(wallet.balanceAeur) / 100;
+                        $("#balance").html(String(balance.toFixed(2)));
+                    }
+                } else if (asset.assetId == "WAVES") {
+                    wallet.balanceWaves = asset.amount;
+                    var balance = wallet.balanceWaves / SATINBTC;
+                    $("#balanceWaves").html(String(balance.toFixed(8)));
+                } else if (asset.assetId == AINT) {
+                    wallet.balanceAint = asset.amount;
+                    var balance = wallet.balanceAint / SATINBTC;
+                    $("#balanceAint").html(String(balance.toFixed(4)));
+                } else if (asset.assetId == ANOTE) {
+                    wallet.balanceAnote = asset.amount;
+                    var balance = wallet.balanceAnote / SATINBTC;
+                    $("#balanceAnotes").html(String(balance.toFixed(8)));
                 }
-            } else if (asset.assetId == AEUR) {
-                wallet.balanceAeur = asset.amount;
-                if (t.lang == "en") {
-                    var balance = Math.round(wallet.balanceAeur) / 100;
-                    $("#balance").html(String(balance.toFixed(2)));
-                }
-            } else if (asset.assetId == "WAVES") {
-                wallet.balanceWaves = asset.amount;
-                var balance = wallet.balanceWaves / SATINBTC;
-                $("#balanceWaves").html(String(balance.toFixed(8)));
-            } else if (asset.assetId == AINT) {
-                wallet.balanceAint = asset.amount;
-                var balance = wallet.balanceAint / SATINBTC;
-                $("#balanceAint").html(String(balance.toFixed(4)));
-            } else if (asset.assetId == ANOTE) {
-                wallet.balanceAnote = asset.amount;
-                var balance = wallet.balanceAnote / SATINBTC;
-                $("#balanceAnotes").html(String(balance.toFixed(8)));
-            }
-        });
+            });
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     private async initWaves(seed) {
