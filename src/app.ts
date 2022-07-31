@@ -469,6 +469,9 @@ class Wallet {
 
     async exchange() {
         var from = $("#fromCurrency").val();
+        if (from == "") {
+            from = undefined;
+        }
         var to = $("#toCurrency").val();
         var decimalPlaces = this.getDecimalPlaces(String(from));
         var fee = this.getFee(String(from));
